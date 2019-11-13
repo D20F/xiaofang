@@ -60,3 +60,28 @@ const getConfig = (reqData) => {
     const data = reqData;
     return getData(url, data);
 }
+
+// 函数节流
+var canRun = true;
+function(){
+    if(!canRun){
+        // 判断是否已空闲，如果在执行中，则直接return
+        return;
+    }
+ 
+    canRun = false;
+    setTimeout(function(){
+        console.log("函数节流");
+        canRun = true;
+    }, 300);
+};
+// 函数防抖
+var timer = false;
+function(){
+    clearTimeout(timer); // 清除未执行的代码，重置回初始化状态
+ 
+    timer = setTimeout(function(){
+        console.log("函数防抖");
+    }, 300);
+};    
+}; 
