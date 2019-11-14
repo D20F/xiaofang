@@ -103,3 +103,7 @@ console.log([...country]); // ['U', 'S', 'A']
 //使用text-align-last对齐两端文本
 //要点：通过text-align-last:justify设置文本两端对齐
 //场景：未知字数中文对齐
+
+//使用text-overflow控制文本溢出
+//要点：通过text-overflow:ellipsis对溢出的文本在末端添加...
+//场景：单行文字溢出、多行文字溢出
