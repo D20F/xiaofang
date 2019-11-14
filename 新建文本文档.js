@@ -100,3 +100,6 @@ const country = 'USA';
 country.split('');
 console.log([...country]); // ['U', 'S', 'A']
 
+//使用text-align-last对齐两端文本
+//要点：通过text-align-last:justify设置文本两端对齐
+//场景：未知字数中文对齐
