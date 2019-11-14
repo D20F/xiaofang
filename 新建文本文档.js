@@ -107,3 +107,6 @@ console.log([...country]); // ['U', 'S', 'A']
 //使用text-overflow控制文本溢出
 //要点：通过text-overflow:ellipsis对溢出的文本在末端添加...
 //场景：单行文字溢出、多行文字溢出
+
+// 正则
+"^[\u4e00-\u9fa5]{1,10}$"  //匹配1个到10个中文
