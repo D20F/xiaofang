@@ -90,3 +90,13 @@ function(){
 var a=[{b: 3}, {b: 1}]
 var b=[...a]
 //这样b就可以在不改变a的情况下实现赋值，实现深拷贝
+
+//可以用concat把两个数组连接起来，但为什么不用...展开运算符呢
+const fruitsAndVegetables = fruits.concat(vegetables);
+const fruitsAndVegetables = [...fruits, ...vegetables]; 
+
+//字符串切割，骚操作
+const country = 'USA';
+country.split('');
+console.log([...country]); // ['U', 'S', 'A']
+
