@@ -110,3 +110,7 @@ console.log([...country]); // ['U', 'S', 'A']
 
 // 正则
 "^[\u4e00-\u9fa5]{1,10}$"  //匹配1个到10个中文
+
+//输出小星星
+var StartScore = rate => "★★★★★☆☆☆☆☆".slice(5 - rate, 10 - rate);
+var start = StartScore(3);
