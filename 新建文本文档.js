@@ -130,3 +130,13 @@ box.addEventListener('touchend', function (e) {
     console.log(e);
 
 })
+
+//快速转换数字
+let number = '10';
+number = ~~number;
+number = +number;
+console.log(number); // 10
+
+//取整
+console.log(-10.9 | 0);//-10
+console.log(~~10.9);//10
