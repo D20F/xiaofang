@@ -114,3 +114,19 @@ console.log([...country]); // ['U', 'S', 'A']
 //输出小星星
 var StartScore = rate => "★★★★★☆☆☆☆☆".slice(5 - rate, 10 - rate);
 var start = StartScore(3);
+
+//触摸事件
+var box = document.querySelector('.homepage-content-wrap');
+box.addEventListener('touchstart', function (e) {
+    console.log('start');
+    console.log(e);
+})
+box.addEventListener('touchmove', function (e) {
+    console.log('move');
+    console.log(e);
+})
+box.addEventListener('touchend', function (e) {
+    console.log('end');
+    console.log(e);
+
+})
