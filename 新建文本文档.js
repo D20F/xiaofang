@@ -11,9 +11,7 @@ var array=[1,3,3,3,22,3,1,2,3,4,5,6,7,8,1,2,3,4,5,7,66,6,6,6,4,4]
         } 
       }
       var b=array[i]
-      array[i]={s:ccc}
       array[i][b]=ccc
-      delete array[i].s;
     }
     console.log(array)
 
