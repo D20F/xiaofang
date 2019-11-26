@@ -71,3 +71,16 @@ Object.defineProperty(Person, 'name', {
 })
 Person.name=1;//Person.name 1
 console.log(temp)//1
+
+//Promise 使用方法
+var promise1 = new Promise((resolve, reject) => {
+  setTimeout(function() {
+    resolve('成功');
+    // reject('错误');
+  }, 300);
+});
+promise1.then(function(value,error) {
+    console.log(value);
+}).then((resolve,reject)=>{
+    console.log(reject);
+})
