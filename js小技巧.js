@@ -1,8 +1,3 @@
-// 基本类型：undefined、null、string、number、boolean、symbo（ES6）
-// 引用类型：Object、Array、RegExp、Date、Function
-// 区别：引用类型值可添加属性和方法，而基本类型值则不可以。
-
-
 
 // ...展开语法将数组展开
 var a=[{b: 3}, {b: 1}]
