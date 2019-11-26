@@ -15,11 +15,15 @@ var array=[1,3,3,3,22,3,1,2,3,4,5,6,7,8,1,2,3,4,5,7,66,6,6,6,4,4]
     }
     console.log(array)
 
-//封装axios
+//导入axios
 import axios from 'axios';
-
+//设置基础接口地址
 // var baseURL = 'http://172.81.224.11/api';
-
+// 创建axios全局请求对象
+const xhr = axios.create({
+    baseURL,
+    timeout: 10000,
+});
 // post请求,needHeader参数用于判断是否需要token认证
 const postData = (url, data, needHeader) => {
     let headers = {};
