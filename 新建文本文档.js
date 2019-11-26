@@ -142,3 +142,17 @@ console.log(number); // 10
 //取整
 console.log(-10.9 | 0);//-10
 console.log(~~10.9);//10
+
+//vue双向绑定原理 根据defineproperty实现
+let Person = {}
+let temp = null
+Object.defineProperty(Person, 'name', {
+  get: function () {
+    return 
+  },
+  set: function (val) {
+    temp = val
+  }
+})
+Person.name=1;//Person.name 1
+console.log(temp)//1
