@@ -84,3 +84,4 @@ promise1.then(function(value,error) {
 }).then((resolve,reject)=>{
     console.log(reject);
 })
+// async await  await只是promise的语法糖
