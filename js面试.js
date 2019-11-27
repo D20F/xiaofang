@@ -54,3 +54,5 @@ function copy(obj) {
 // script.src = 'http://www.demo2.com:8080/login?user=admin&callback=onBack';
 // document.head.appendChild(script);   添加srcipt标签
 // function onBack(res) {alert(JSON.stringify(res));}  回调函数
+
+// cookie  localStorage  sessionStorage
