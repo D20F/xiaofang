@@ -12,6 +12,24 @@
 //       ↓                         ⁄
 //   实例对象p  ----------------- ⁄
 
+// 继承 方法一  原型链继承
+// 父类函数
+function per(name){
+	this.name = name;
+}
+var pername = new per('实例化');
+console.log(pername.name)  //实例化
+console.log(pername.showname)  // console.log(实例化)
+per.prototype.names='新的';
+console.log(pername.names);//新的
+per.prototype.showname=function () {
+  console.log(this.name)
+} 
+pername.showname();//实例化
+
+
+
+
 
 
 // JSON.parse() 方法用于将一个 JSON 字符串转换为对象。
