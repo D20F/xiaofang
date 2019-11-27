@@ -30,11 +30,6 @@ per.prototype.showname=function () {
 } 
 pername.showname();//实例化
 
-
-
-
-
-
 // JSON.parse() 方法用于将一个 JSON 字符串转换为对象。
 // JSON.stringify() 方法将一个 JavaScript 值（对象或者数组）转换为一个 JSON 字符串
 // 深拷贝方法一    var obj2=JSON.parse(JSON.stringify(obj1)) 
@@ -51,3 +46,11 @@ function copy(obj) {
     }
   return result;
 }
+
+// jsonp跨域
+// var script = document.createElement('script');  创建script标签
+// script.type = 'text/javascript';   指定类型
+// 传参并指定回调执行函数为onBack             参数{user:admin}  callback回调函数onBack
+// script.src = 'http://www.demo2.com:8080/login?user=admin&callback=onBack';
+// document.head.appendChild(script);   添加srcipt标签
+// function onBack(res) {alert(JSON.stringify(res));}  回调函数
