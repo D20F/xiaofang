@@ -2,6 +2,9 @@
 // 引用类型：Object、Array、RegExp、Date、Function
 // 区别：引用类型值可添加属性和方法，而基本类型值则不可以。
 
+// script标签的defer和async有什么区别
+// 没有这两个标签js加载为同步，async为异步加载。defer为异步加载，不过需要等dom都加载完，再执行js文件
+
 //                   prototype
 //                -------------->   
 // 构造函数person                   person.prototype原型
