@@ -37,3 +37,6 @@ console.log(number); // 10
 //取整
 console.log(-10.9 | 0);//-10
 console.log(~~10.9);//10
+
+// 存储cookie         key       data    过期时间   设置的过期时间
+// document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT";
