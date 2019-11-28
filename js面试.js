@@ -2,6 +2,12 @@
 // 引用类型：Object、Array、RegExp、Date、Function
 // 区别：引用类型值可添加属性和方法，而基本类型值则不可以。
 
+var a=function(c,b){}
+var b=function(c,b){}
+// call(b,1,2)    //绑定this,后面为函数参数 
+// apply(b,[1,2]) //绑定this,函数参数用数组形式放进去 
+// bind(b,1,2)()  //绑定this,但是不会立刻执行,需要自己去执行,其他的和call一样
+
 // script标签的defer和async有什么区别
 // 没有这两个标签js加载为同步，async为异步加载。defer为异步加载，不过需要等dom都加载完，再执行js文件
 
