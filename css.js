@@ -56,5 +56,15 @@
 // 行间样式	                1000
 // id	                      100
 // class/属性选择器/伪类	     10
-// 标签选择器	                  1
-// 通配符	                      0
+// 标签选择器	               1
+// 通配符	                   0
+
+// 三栏布局
+// <div class="container">
+//     <div class="left">left</div>
+//     <div class="main">main</div>
+//     <div class="right">right</div>
+// </div>
+// .container{display:flex}      .left{width:100px;}                    .main{flex:1;}         .right{width:100px;}
+// .container{position:relative} .left{width:100px;position: absolute;} .main{margin:0 100px;} .right{width:100px;position: absolute;}
+// .container{position:relative} .left{width:100px;float:left;}         .main{margin:0 100px;} .right{width:100px;float:right;}
