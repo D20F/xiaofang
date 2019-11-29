@@ -108,6 +108,27 @@
   } 
   pername.showname();//实例化
 }
+// 继承 方法二  call重新定义this构造函数继承
+{
+  function SuperType(){
+    this.colors=["red", "blue", "green"];
+  }
+  function SubType(){
+    //继承SuperType
+    SuperType.call(this);
+  }
+  var instance1=new SubType();
+  instance1.colors.push("black");
+  alert(instance1.colors);  //red,bllue,green,black 
+  var instance2=new SubType();
+  alert(instance2.colors);  //red,blue,green
+}
+// 继承 方法三  组合继承
+{
+  // 函数方法使用原型链继承,以便能够复用
+  // 属性定义用构造函数,以便每个不同的函数可以有不同的数据
+}
+
 
 // 深拷贝
 {
