@@ -64,3 +64,10 @@ console.log(~~10.9);//10
 
 // 存储cookie         key       data    过期时间   设置的过期时间
 // document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT";
+
+//阻止冒泡
+document.getElementsById().stopPropagation 
+//捕获冒泡
+document.getElementById().addEventListener("click",function(event){
+ event.target.className=='main'?console.log(event):console.log(2)
+})
