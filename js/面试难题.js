@@ -41,19 +41,75 @@ console.log('end')
 
 // 使用js实现一个repeat法,functionrepeat(func,times,wait){}, 
 // const repeatFunc = repeat(alert,4,3000),调用这个repeatedFunc('helloworld'),会alert4次hellworld,每次间隔3秒
-function repeat(func,times,wait){
-var i=0;
-func(i);
-var hel=function(){setTimeout(function(){
-      i++
-      if(i<times){
-        func(i);
-        hel();
+{
+  function repeat(func,times,wait){
+    return async function (str) {
+          let i=0;
+          let a=function (){
+            if(i==0){
+              func(str)
+              i++
+              a()
+            }else{
+              setTimeout(() => {
+                func(str)
+                i++
+                if(i<times){
+                  a()    
+                }    
+              }, wait);
+            }
+          }
+          a();
+        }
       }
-    },wait)
- }
- hel();
+      let  rep=repeat(console.log,4,3000);
+      rep('hel')
+      console.log('end')
 }
-const rep=repeat(console.log,4,3000);
-rep
-console.log('end')
+      
+// 解构[1,2,["3",4,"5",[6,[7,8],9]]]不改变数据类型
+{
+  function parseArr(arr,res){
+    var i=0;
+    for(i=0;i<arr.length;i++){
+      if(arr[i] instanceof Array){
+        parseArr(arr[i],res);
+      }else{
+        res.push(arr[i]);
+      }
+    }
+  }
+  var a=[1,2,["3",4,"5",[6,[7,8],9]]]
+  var res=[];
+  parseArr(a,res);
+
+  var arr = ['mu','zi',['dig',['big','love']]]
+  function flatten(arr){ 
+    var res = []; 
+    for(var i=0;i<arr.length;i++){
+      if(Array.isArray(arr[i])){
+        res = res.concat(flatten(arr[i]));
+      }else{
+        res.push(arr[i]);
+      } 
+    } 
+    return res; 
+  }
+console.log(flatten(arr))//["mu", "zi", "dig", "big", "love"]
+}
+
+function timeout(ms) {
+  return new Promise((resolve) => {
+    setTimeout(()=>{
+      console.log(1)
+      resolve(2)
+    }, ms);
+  });
+}
+async function asyncPrint(value, ms) {
+  await timeout(ms);
+  console.log(value);
+}
+asyncPrint('hello world', 3000);
+console.log(3)
