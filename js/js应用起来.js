@@ -62,6 +62,19 @@ console.log(number); // 10
 console.log(-10.9 | 0);//-10
 console.log(~~10.9);//10
 
+// 指幂运算符
+2**2 === 4
+3**3 === 27
+
+// 替换或者匹配正则                 
+'123'.replace('1','2')//223
+// 寻找或者匹配正则   
+'123'.match('1')//true
+// 寻找 
+'123'.includes ('1')//true
+//解构多维数组 按照参数解构几次 
+[1,2,["3",4,"5",[6,[7,8],9]]].flat(3)//[1, 2, "3", 4, "5", 6, 7, 8, 9]
+
 // 存储cookie         key       data    过期时间   设置的过期时间
 // document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT";
 

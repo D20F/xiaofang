@@ -70,6 +70,20 @@ console.log('end')
       
 // 解构[1,2,["3",4,"5",[6,[7,8],9]]]不改变数据类型
 {
+  var arr=[1,2,["3",4,"5",[6,[7,8],9]]]
+  var l=0;
+  function parseArr(arr){
+    var i=0;
+    for(i=0;i<arr.length;i++){
+      if(arr[i] instanceof Array){
+       l++
+       parseArr(arr[i])
+      }
+    }
+  }
+  parseArr(arr)
+  arr.flat(l)
+
   function parseArr(arr,res){
     var i=0;
     for(i=0;i<arr.length;i++){
