@@ -8,6 +8,12 @@
 // three.js  文档
 // https://threejs.org/docs/index.html#manual/zh/introduction/Creating-a-scene
 
+// Whitestorm.js
+// 二次封装three.js
+
+// 手撕dom元素
+// https://segmentfault.com/a/1190000021199145#item-2
+
 //    https://www.xmind.cn/                                     构建脑图
 //    https://www.processon.com/                                构建脑图和流程图
 //    https://www.uupoop.com/                                   在线ps
