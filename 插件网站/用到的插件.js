@@ -21,5 +21,9 @@
 //    https://cli.im/                                           二维码生成
 //    https://www.aconvert.com/cn/video/mp4-to-gif/             转GIF
 
+
+// https://segmentfault.com/a/1190000012327631   你不知道的h5，里面的东西可以重点看看
+
+
 // 星益小游戏平台
 // https://www.jocat.cn/      奇偶猫
