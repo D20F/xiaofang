@@ -20,3 +20,6 @@
 //    https://tinypng.com/                                      压缩图片
 //    https://cli.im/                                           二维码生成
 //    https://www.aconvert.com/cn/video/mp4-to-gif/             转GIF
+
+// 星益小游戏平台
+// https://www.jocat.cn/      奇偶猫
