@@ -85,8 +85,7 @@ console.log('end')
   arr.flat(l)
 
   function parseArr(arr,res){
-    var i=0;
-    for(i=0;i<arr.length;i++){
+    for(var i=0;i<arr.length;i++){
       if(arr[i] instanceof Array){
         parseArr(arr[i],res);
       }else{
