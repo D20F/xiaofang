@@ -11,10 +11,16 @@
           ccc++
         } 
       }
-      var b=array[i]
-      array[i][b]=ccc
+      array[i]={[array[i]]:ccc}
     }
     console.log(array)
+    //给对象的键值动态赋值     
+    // var thetop = "top",
+    // obj = { [thetop]: 10 };
+    // console.log(obj)//{top: 10}
+    // var a=['c','a']
+    // obj = { [a[0]]: 10 };
+    // console.log(obj)//{c: 10}
 }
 
 // 函数节流

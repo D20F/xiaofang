@@ -84,3 +84,11 @@ document.getElementsById().stopPropagation
 document.getElementById().addEventListener("click",function(event){
  event.target.className=='main'?console.log(event):console.log(2)
 })
+
+//给对象的键值动态赋值     
+var thetop = "top",
+obj = { [thetop]: 10 };
+console.log(obj)//{top: 10}
+var a=['c','a']
+obj = { [a[0]]: 10 };
+console.log(obj)//{c: 10}
