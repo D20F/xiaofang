@@ -21,6 +21,7 @@
 
 // 星益小游戏平台   星益博客
 // https://www.jocat.cn/      奇偶猫
+// https://www.mycodes.net/166/   源码之家小游戏冲冲冲
 
 // Cordova  打包
 
