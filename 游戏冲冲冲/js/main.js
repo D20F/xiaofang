@@ -28,6 +28,8 @@ function Juxing(x,y,w,h,d) {
             this.y-=1
         }else if(this.direction == 'bottom'){
             this.y+=1
+        }else if(this.direction == 'stop'){
+            
         }
     }
     this.control=function (x,y) {
@@ -77,10 +79,41 @@ function Juxing(x,y,w,h,d) {
 function Game(){
     let thiss=this
     this.obj_coll=[]
+    this.Event=[]
+    this.data = [
+        [Juxing,100,250,20,20,'left'],
+        [Juxing,200,250,20,20,'left'],
+        [Juxing,300,250,20,20,'left'],
+        [Juxing,400,250,20,20,'left'],
+        [Juxing,500,250,20,20,'left'],
+        [Juxing,600,250,20,20,'left'],
+        [Juxing,700,250,20,20,'left'],
+        [Juxing,800,250,20,20,'left'],
+        [Juxing,150,250,20,20,'left'],
+        [Juxing,250,250,20,20,'left'],
+        [Juxing,350,250,20,20,'left'],
+        [Juxing,450,250,20,20,'left'],
+        [Juxing,550,250,20,20,'left'],
+        [Juxing,650,250,20,20,'left'],
+        [Juxing,750,250,20,20,'left'],
+        [Juxing,730,250,20,20,'left'],
+        [Juxing,350,150,20,20,'top'],
+        [Juxing,350,250,20,20,'top'],
+        [Juxing,350,310,20,20,'top'],
+        [Juxing,350,200,20,20,'top'],
+        [Juxing,150,300,20,20,'left'],
+        [Juxing,250,300,20,20,'left'],
+    ]
+    this.Create_Object_Multiple = function () {
+        for(let i=0;i<this.data.length;i++){
+            let juxing=this.Create_Object_single(this.data[i][0],this.data[i][1],this.data[i][2],this.data[i][3],this.data[i][4],this.data[i][5])
+            this.Event.push(juxing)
+        }
+    }
     this.clear=function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-    this.Create_Object = function (callback,x,y,w,h,d){
+    this.Create_Object_single = function (callback,x,y,w,h,d){
         let juxing=new callback(x,y,w,h,d)
         this.obj_coll.push(juxing)
         return function(){
@@ -93,16 +126,16 @@ function Game(){
         let obj_coll=thiss.obj_coll
         for(let i=0;i<obj_coll.length;i++){
             for(let l=1;l<obj_coll.length;l++){
-                if(obj_coll[l].x==(obj_coll[i].x+obj_coll[i].w)){
+                if((obj_coll[l].x==(obj_coll[i].x+obj_coll[i].w)) && ((obj_coll[l].y<=(obj_coll[i].y+obj_coll[i].h) && (obj_coll[l].y>=obj_coll[i].y)))){
                     obj_coll[l].direction='right'
                     obj_coll[i].direction='left'
-                }else if(obj_coll[i].x==(obj_coll[l].x+obj_coll[l].w)){
+                }else if((obj_coll[i].x==(obj_coll[l].x+obj_coll[l].w) && ((obj_coll[l].y<=(obj_coll[i].y+obj_coll[i].h) && (obj_coll[l].y>=obj_coll[i].y))))){
                     obj_coll[l].direction='left'
                     obj_coll[i].direction='right'
-                }else if(obj_coll[l].y==(obj_coll[i].y+obj_coll[i].h)){
+                }else if((obj_coll[l].y==(obj_coll[i].y+obj_coll[i].h)) && ((obj_coll[l].x<=(obj_coll[i].x+obj_coll[i].w) && (obj_coll[l].x>=obj_coll[i].x)))){
                     obj_coll[l].direction='bottom'
                     obj_coll[i].direction='top'
-                }else if(obj_coll[i].y==(obj_coll[l].y+obj_coll[l].h)){
+                }else if((obj_coll[i].y==(obj_coll[l].y+obj_coll[l].h)) && ((obj_coll[l].x<=(obj_coll[i].x+obj_coll[i].w) && (obj_coll[l].x>=obj_coll[i].x)))){
                     obj_coll[l].direction='top'
                     obj_coll[i].direction='bottom'
                 }
@@ -113,18 +146,23 @@ function Game(){
 
 let game=new Game()
 
+
+
 function initstart(){
     
-    let juxing=game.Create_Object(Juxing,700,250,20,20,'left')
-    let juxing2=game.Create_Object(Juxing,200,250,20,20,'right')
-
-
+    game.Create_Object_Multiple();
+    
 
     function animate() {
         game.clear();//定时清除画布
         game.Impact_Checking()
-        juxing()//本体函数
-        // juxing2()
+
+        for (let i = 0; i < game.Event.length; i++) {
+            game.Event[i]()
+        } 
+
+
+
         requestAnimationFrame(animate)
     }
     animate()
