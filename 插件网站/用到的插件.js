@@ -33,3 +33,6 @@
 // https://segmentfault.com/a/1190000021221950          //2020面试题
 // https://segmentfault.com/a/1190000021199145#item-2  // 手撕dom元素
 // https://segmentfault.com/a/1190000012327631        //你不知道的h5，里面的东西可以重点看看
+
+
+// http://www.jq22.com/demo/NeverGiveUp201711130005/#1/whiteC/1/1   永不放弃
