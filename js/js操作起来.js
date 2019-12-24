@@ -156,9 +156,35 @@
   }
 }
 
+//事件委托
+{
+  document.addEventListener("click",function(e){
+    if(e.target.className=="left"){
+    console.log(1)
+    }else if(e.target.className=="main"){
+    console.log(2)
+    }else{
+    console.log(3)
+    }
+})
+}
 
-
-
+// async await 用法
+{
+  function sing() {
+    return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                        resolve(`来一首好听的歌吧~~~`);
+                }, 1000);
+            });
+  }
+  async function demo() {
+      const s = await sing(); 
+      console.log(s) 
+      console.log('hello, joel。今年我 26 岁'); 
+  }
+  demo();
+}
 
 
 
