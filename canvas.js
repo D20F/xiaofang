@@ -1,8 +1,8 @@
 // createPattern()	在指定的方向上重复指定的元素
-    var pat=ctx.createPattern(img,"repeat");
-    ctx.rect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle=pat;
-    ctx.fill();
+    // var pat=ctx.createPattern(img,"repeat");
+    // ctx.rect(0,0,canvas.width,canvas.height);
+    // ctx.fillStyle=pat;
+    // ctx.fill();
 
 
 
@@ -26,3 +26,6 @@
 // y	    在画布上放置图像的 y 坐标位置。
 // width	可选。要使用的图像的宽度。（伸展或缩小图像）
 // height	可选。要使用的图像的高度。（伸展或缩小图像）
+
+
+

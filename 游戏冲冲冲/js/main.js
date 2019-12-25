@@ -10,197 +10,130 @@ var canvas = document.getElementById('canvas'),
 ctx = canvas.getContext('2d');
 canvas.width=window.screen.width
 canvas.height=window.screen.height
+var ball_1=document.querySelector("#ball_1")
 
-
-function Juxing(x,y,w,h,d) {
+function Juxing(img,imgx,imgy) {
     let thiss=this
-    this.x=x
-    this.y=y
-    this.w=w
-    this.h=h
-    this.direction=d
-    this.mobile=function () {
+    this.x=50   //起始x坐标
+    this.y=50  //起始y坐标
+    this.width = 20
+    this.height = 20;
+    this.img =img;
+    this.imgx =imgx;
+    this.imgy =imgy;
+    this.direction='right'   //方向
+    this.moveStatus=function () {
         if(this.direction == 'left'){
-            this.x-=1;
+            this.x-=.7;
         }else if(this.direction == 'right'){
-            this.x+=1
+            this.x+=.7
         }else if(this.direction == 'top'){
-            this.y-=1
+            this.y-=.7
         }else if(this.direction == 'bottom'){
-            this.y+=1
+            this.y+=.7
         }else if(this.direction == 'stop'){
             
         }
     }
-    this.control=function (x,y) {
-        if(this.x>x){ //在他左边
-            this.direction = 'left'
-        }
-        if(this.y>y){ //在他上边
-            this.direction = 'top'
-        }
-        if(this.x+this.w<x){ //在他右边          
-            this.direction = 'right'
-        }
-        if(this.y+this.h<y){ //在他下边
+    this.drawPicture=function () {
+        if(this.x>=750 && this.y>=50){
             this.direction = 'bottom'
         }
+        if(this.x>=750 && this.y>=280){
+            this.direction = 'left'
+        }
+        if(this.x<=100 && this.y>=280){
+            this.direction = 'top'
+        }
+        if(this.x<=100 && this.y<=100){
+            this.direction = 'right'
+        }
+        if(this.x>=600 && (this.y<=100 && this.y>=60)){
+            this.direction = 'bottom'
+        }
+        if(this.x>=600 && this.y>=200){
+            this.direction = 'left'
+        }
+        if(this.x<100 && this.y>=200){
+            this.direction = 'stop'
+            game.Event.shift()
+            game.data.shift()
+        }   
+        ctx.drawImage(this.img,this.imgx,this.imgy,40,40,this.x,this.y,this.width,this.height);
     }
-    this.controlinit=function () {
+}
+
+function Zhujiao() {
+    this.drawPicture=function () {
+        ctx.drawImage(ball_1,0,43,40,40,canvas.width/2-20,canvas.height/2-20,40,40);
+    }
+    this.moveStatus=function () {
         document.querySelector("#canvas").addEventListener("touchstart",function (e) {
             let bbox = canvas.getBoundingClientRect();
             let x =  e.touches[0].clientX  * (canvas.width/bbox.width);
             let y = e.touches[0].clientY * (canvas.height/bbox.height);
-            thiss.control(x,y)
-        })
-        document.querySelector("canvas").addEventListener("touchend",function (e) {
-            let bbox = canvas.getBoundingClientRect();
-            let x =  e.changedTouches[0].clientX  * (canvas.width/bbox.width);
-            let y = e.changedTouches[0].clientY * (canvas.height/bbox.height);
-            thiss.control(x,y)
+            console.log(x-canvas.width/2,y-canvas.height/2)
         })
     }
-    this.Boundary_Collision=function() {
-        if((this.x+this.w)>canvas.width){ //碰到右边界
-            this.direction = 'left'
-        }
-        if((this.y+this.h)>canvas.height){ //碰到下边界
-            this.direction = 'top'
-        }
-        if(this.x<0){ //碰到左边界          
-            this.direction = 'right'
-        }
-        if(this.y<0){ //碰到上边界
-            this.direction = 'bottom'
-        }
+    this.emission=function () {
+        ctx.drawImage(ball_1,0,43,40,40,350,154,40,40);
     }
 }
 
 function Game(){
     let thiss=this
-    this.obj_coll=[]
     this.Event=[]
-    this.data = [
-        [Juxing,100,250,20,20,'left'],
-        [Juxing,200,250,20,20,'left'],
-        [Juxing,300,250,20,20,'left'],
-        [Juxing,400,250,20,20,'left'],
-        [Juxing,500,250,20,20,'left'],
-        [Juxing,600,250,20,20,'left'],
-        [Juxing,700,250,20,20,'left'],
-        [Juxing,800,250,20,20,'left'],
-        [Juxing,150,250,20,20,'left'],
-        [Juxing,250,250,20,20,'left'],
-        [Juxing,350,250,20,20,'left'],
-        [Juxing,450,250,20,20,'left'],
-        [Juxing,550,250,20,20,'left'],
-        [Juxing,650,250,20,20,'left'],
-        [Juxing,750,250,20,20,'left'],
-        [Juxing,730,250,20,20,'left'],
-        [Juxing,350,150,20,20,'top'],
-        [Juxing,350,250,20,20,'top'],
-        [Juxing,350,310,20,20,'top'],
-        [Juxing,350,200,20,20,'top'],
-        [Juxing,150,300,20,20,'left'],
-        [Juxing,250,300,20,20,'left'],
-    ]
-    this.Create_Object_Multiple = function () {
-        for(let i=0;i<this.data.length;i++){
-            let juxing=this.Create_Object_single(this.data[i][0],this.data[i][1],this.data[i][2],this.data[i][3],this.data[i][4],this.data[i][5])
-            this.Event.push(juxing)
-        }
+    this.data = []
+    this.Create_Object_Zuma = function (callback,img,imgx,imgy){
+        let juxing=new callback(img,imgx,imgy)
+        this.data.push(juxing)
+        let eve=function () {
+            juxing.drawPicture()
+            juxing.moveStatus()
+        } 
+        this.Event.push(eve)
     }
     this.clear=function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-    this.Create_Object_single = function (callback,x,y,w,h,d){
-        let juxing=new callback(x,y,w,h,d)
-        this.obj_coll.push(juxing)
-        return function(){
-            juxing.Boundary_Collision()//边界碰撞检测
-            juxing.mobile();//方向
-            ctx.fillRect(juxing.x,juxing.y,juxing.w,juxing.h);//绘制
-        }
-    }
-    this.Impact_Checking = function (){
-        let obj_coll=thiss.obj_coll
-        for(let i=0;i<obj_coll.length;i++){
-            for(let l=1;l<obj_coll.length;l++){
-                if((obj_coll[l].x==(obj_coll[i].x+obj_coll[i].w)) && ((obj_coll[l].y<=(obj_coll[i].y+obj_coll[i].h) && (obj_coll[l].y>=obj_coll[i].y)))){
-                    obj_coll[l].direction='right'
-                    obj_coll[i].direction='left'
-                }else if((obj_coll[i].x==(obj_coll[l].x+obj_coll[l].w) && ((obj_coll[l].y<=(obj_coll[i].y+obj_coll[i].h) && (obj_coll[l].y>=obj_coll[i].y))))){
-                    obj_coll[l].direction='left'
-                    obj_coll[i].direction='right'
-                }else if((obj_coll[l].y==(obj_coll[i].y+obj_coll[i].h)) && ((obj_coll[l].x<=(obj_coll[i].x+obj_coll[i].w) && (obj_coll[l].x>=obj_coll[i].x)))){
-                    obj_coll[l].direction='bottom'
-                    obj_coll[i].direction='top'
-                }else if((obj_coll[i].y==(obj_coll[l].y+obj_coll[l].h)) && ((obj_coll[l].x<=(obj_coll[i].x+obj_coll[i].w) && (obj_coll[l].x>=obj_coll[i].x)))){
-                    obj_coll[l].direction='top'
-                    obj_coll[i].direction='bottom'
-                }
-            }
-        }
-    }
+
 }
 
 let game=new Game()
+let zhujiao=new Zhujiao()
 
 
 
 function initstart(){
     
-    game.Create_Object_Multiple();
-    
+    setInterval(() => {
+        let color=Math.random();
+        let data=[]
+        if(color > 0.5){
+            data=[Juxing,ball_1,0,0]
+        }else if(color < 0.5){
+            data=[Juxing,ball_1,43,0]
+        }
+        game.Create_Object_Zuma(data[0],data[1],data[2],data[3])
+    }, 500);
 
     function animate() {
         game.clear();//定时清除画布
-        game.Impact_Checking()
 
         for (let i = 0; i < game.Event.length; i++) {
             game.Event[i]()
         } 
-
-
+        zhujiao.drawPicture()
 
         requestAnimationFrame(animate)
     }
     animate()
 
-    for(let i=0;i<game.obj_coll.length;i++){
-        game.obj_coll[i].controlinit()
-    }
+    zhujiao.moveStatus()
+ 
 
 
 }
 
 initstart()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var img=document.querySelector('#spr')
-
-// ctx.drawImage(img,0,0,img.width,img.height,0,0,200,500);
-// ctx.translate(100,200);
-// ctx.drawImage(img,0,0,img.width,img.height,200,200,200,500);
-    
-    
-
-
-
 
