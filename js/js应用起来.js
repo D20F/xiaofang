@@ -92,3 +92,6 @@ console.log(obj)//{top: 10}
 var a=['c','a']
 obj = { [a[0]]: 10 };
 console.log(obj)//{c: 10}
+
+//给一个类似数组的东西转换为真正的数组
+Array.from
