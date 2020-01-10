@@ -95,3 +95,29 @@ console.log(obj)//{c: 10}
 
 //给一个类似数组的东西转换为真正的数组
 Array.from
+
+
+//函数参数对象
+function func(...arguments) {
+    console.log(arguments[0],arguments[1],arguments[2]); // [1, 'sada', 1]
+}
+func(1, 'sada', 1);
+
+//原型链
+function Person() {
+
+}
+var person = new Person();
+console.log(person.__proto__ === Person.prototype); // true
+
+// JavaScript是静态作用域
+// 函数在创建的时候就已经如果找不到定义的值就会往上一层找,在定义的时候就已经决定了输出的值
+var value = 1;
+function foo() {
+    console.log(value);
+}
+function bar() {
+    var value = 2;
+    foo();
+}
+bar();//1
