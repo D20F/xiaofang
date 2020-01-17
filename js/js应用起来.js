@@ -121,3 +121,8 @@ function bar() {
     foo();
 }
 bar();//1
+
+
+// input限制只能输入数字   
+oninput = "this.value=this.value.replace(/[^\d]/g,'')"  //vue写法
+oninput = "value=value.replace(/[^\d]/g,'')"  //普通写法
