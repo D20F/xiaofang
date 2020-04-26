@@ -126,3 +126,6 @@ async function asyncPrint(value, ms) {
 }
 asyncPrint('hello world', 3000);
 console.log(3)
+
+
+
