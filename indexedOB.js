@@ -15,21 +15,21 @@
 **/
 
 /**
- * 打开数据库  没有就创建     db数据库对象
+ * 打开数据库  没有就创建      数据库对象  request.result
  * @param {string} name 数据库名称
 **/
 function open_dataBase(name) {
   var request = window.indexedDB.open(name, 1);
-  var db;
   request.onerror = function (event) { console.log('打开数据库报错',event); };
-  request.onupgradeneeded = function (event) { console.log('打开数据库,数据库升级',event); }
+  request.onupgradeneeded = function (event) {
+     console.log('打开数据库,数据库升级',event); 
+     created(request.result,'chatrod',false,'name');
+  }
   request.onsuccess = function (event) {
-    // 数据库对象db的创建
-    db = event.target.result;
+
     console.log('打开数据库成功',event);
   };
-  db = request.result;
-  return db
+  return request
 }
 /**
  * 删除数据库 
@@ -76,20 +76,18 @@ function created(database,table_name,mode,index){
  * @param {object} database 数据库对象
  * @param {string} table_name 表名
 **/
-function readAll() {
+function readAll(database,table_name) {
   database.transaction(table_name).objectStore(table_name).openCursor().onsuccess = function (event) {
     var cursor = event.target.result;
     if (cursor) {
-      console.log('Id: ' + cursor.key);
-      console.log('Name: ' + cursor.value.name);
-      console.log('Age: ' + cursor.value.age);
-      console.log('Email: ' + cursor.value.email);
+      console.log(cursor);
       cursor.continue();
     } else {
       console.log('没有更多数据了！');
     }
   }
 }
+
 
 /**
  * 增加数据
@@ -98,14 +96,21 @@ function readAll() {
  * @param {object} data 增加的信息  
 **/
 function add(database,table_name,data) {
-  database.transaction([table_name], "readwrite").objectStore(table_name).add(data)
+  let request = database.transaction([table_name], "readwrite").objectStore(table_name)
+  request.add(data);
+  request.onsuccess = function (event) {
+    console.log('数据写入成功');
+  };
+  request.onerror = function (event) {
+    console.log('数据写入失败');
+  }
 }
 
 /**
  * 更新数据
  * @param {object} database 数据库对象
  * @param {string} table_name 表名  格式['dataone','datatwo'] --可以为多个表同时做操作
- * @param {object} data 更新的信息 会更新主键id为1的数据  { id: 1, name: '李四', age: 35, email: 'lisi.com' }  
+ * @param {object} data 更新的信息 会更新数据库相同主键的数据如果没找到相同主键则创建一条该数据  { id: 1, name: '李四', age: 35, email: 'lisi.com' }  
 **/
 function update(database,table_name,data) {
   database.transaction([table_name], "readwrite").objectStore(table_name).put(data)
@@ -118,7 +123,7 @@ function update(database,table_name,data) {
  * @param {string} index 索引名称
 **/
 function get(database,table_name,index) {
-  database.transaction([table_name]).objectStore(table_name).index(index);
+  return database.transaction([table_name], "readonly").objectStore(table_name).get(index);
 }
 
 /**
@@ -148,3 +153,39 @@ function addIndex(database,table_name) {
 
 
 
+
+// const contactPerson = [
+  // { 
+  //   name: "",
+  //   data:[
+  //     {
+  //       name: "test22222222",
+  //       account: "test22222222",
+  //       publicKey: "POG6PQgvhfScyVkaofZtDouiobrC37rN7y9udJqpq66bdN4tVtSH"
+  //     },
+  //   ]
+  // },
+// ];
+// const chatRecord = [
+//   { 
+//     name: "",
+//     data:{
+//       name:{
+//         name:'',
+//         account:'',
+//         info:[
+//           {
+//             id: "2020-4-25 17:32:17",
+//             from: "e11111111111",
+//             to: "test22222222",
+//             content: "dOS9oA==",
+//             state: 1,
+//             create_time: "2020-4-25 17:32:17"
+//           },
+//         ],
+//         you_info:[],
+//         my_info:[],
+//       }
+//     }
+//   },
+// ];
