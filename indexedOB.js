@@ -4,8 +4,9 @@ import store from '../../store/index'
  * 数据库操作 
  * @param {function} open_dataBase              打开数据库            -- 回调
  * @param {function} delete_dataBase            删除数据库            -- 回调
+ * @param {function} close                      关闭数据库            -- 回调
  * 
- * 表操作
+ * 表操作 -- 基础功能
  * @param {function} get_table                  获取表对象             -- 同步
  * @param {function} created                    创建表                 -- 回调
  * @param {function} readAll                    遍历表                 -- 同步
@@ -15,17 +16,26 @@ import store from '../../store/index'
  * @param {function} get_index_callback         获取指定索引数据        -- 回调
  * @param {function} get_main                   获取指定自增主键数据    -- 同步
  * @param {function} get_count                  获取此表有多少条信息    -- 同步
- * @param {function} remove                     删除指定索引            -- 回调
+ * @param {function} remove                     删除指定索引            -- 同步
+ * @param {function} clear                      删除这个表的所有数据     -- 回调
  * @param {function} addIndex                   增加索引                -- 回调
  * @param {function} check_list                 检查是否存在表          -- 回调
+ * 
+ * 表操作 -- 功能封装
+ * @param {function} readAll_exist              遍历表检查是否存在数据    -- 同步
+ * @param {function} replace                    替换单条数据的某些属性    -- 同步
+ * 
 **/
 
-/**
- * 打开数据库  没有就创建      数据库对象  request.result
- * @param {string} name 数据库名称  
- * @param {number} version 数据库版本 
-**/
-function open_dataBase(name, version) {
+
+/** 数据库操作  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────    **/
+ 
+  /**   
+   * 打开数据库  没有就创建      数据库对象  request.result
+   * @param {string} name 数据库名称  
+   * @param {number} version 数据库版本 
+  **/
+  function open_dataBase(name, version) {
     var request = window.indexedDB.open(name, version);
     request.onerror = function (event) {
         console.log('打开数据库报错',event); 
@@ -38,6 +48,7 @@ function open_dataBase(name, version) {
     // };
     return request
   }
+
   /**
    * 删除数据库 
    * @param {string} name 数据库名称
@@ -48,6 +59,7 @@ function open_dataBase(name, version) {
     request.onsuccess  = function (event) { console.log('删除数据库成功'); };
     return request
   }
+
   /**
    * 关闭数据库 
    * @param {object} database 数据库对象
@@ -59,6 +71,9 @@ function open_dataBase(name, version) {
     })
   }
   
+
+/**  表操作 -- 基础功能  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────    **/
+
   /**
    * 获取表对象
    * @param {object} database 数据库对象
@@ -72,6 +87,7 @@ function open_dataBase(name, version) {
         };
     })
   }
+
   /**
    * 创建表
    * @param {object} database 数据库对象
@@ -114,7 +130,6 @@ function open_dataBase(name, version) {
     })
   }
   
-  
   /**
    * 增加数据
    * @param {object} database 数据库对象
@@ -141,12 +156,12 @@ function open_dataBase(name, version) {
   **/
   function update(database,table_name,data) {
     let request = database.transaction([table_name], "readwrite").objectStore(table_name).put(data);
-    request.onsuccess = function (event) {
-        console.log('数据更新成功');
-    };
-    request.onerror = function (event) {
-        console.log('数据更新失败');
-    }
+    // request.onsuccess = function (event) {
+    //     console.log('数据更新成功');
+    // };
+    // request.onerror = function (event) {
+    //     console.log('数据更新失败');
+    // }
     return request
   }
   
@@ -164,12 +179,13 @@ function open_dataBase(name, version) {
         };
     })
   }
+
   /**
    * 获取指定索引数据
    * @param {object} database 数据库对象
    * @param {string} table_name 表名
    * @param {string} indexName 索引名称
-   * @param {string} index 索引名称
+   * @param {string} index 索引数据
   **/
   function get_index(database,table_name,indexName,index) {
     return new Promise((resolve,reject)=>{
@@ -179,17 +195,19 @@ function open_dataBase(name, version) {
         };
     })
   }
+
   /**
    * 获取指定索引数据
    * @param {object} database 数据库对象
    * @param {string} table_name 表名
    * @param {string} indexName 索引名称
-   * @param {string} index 索引名称
+   * @param {string} index 索引数据
   **/
   function get_index_callback(database,table_name,indexName,index) {
     let request = database.transaction([table_name], "readonly").objectStore(table_name).index(indexName).get(index);
     return request
   }
+
   /**
    * 获取此表有多少条信息
    * @param {object} database 数据库对象
@@ -205,13 +223,43 @@ function open_dataBase(name, version) {
   }
   
   /**
-   * 删除指定索引
+   * 删除指定索引    
+   * @param {object}  database    数据库对象   
+   * @param {string}  table_name  表名    格式['dataone','datatwo'] --可以为多个表同时做操作
+   * @param {string}  indexName   索引名 
+   * @param {string}  index       索引数据    可为自增索引也可为自定义的索引名 
+   * @param {boolean} mode        模式    表内有自增主键为true，没有为false, 不传默认为false
+  **/
+  function remove(database, table_name, indexName, index, mode) {
+    return new Promise(async (resolve,reject)=>{
+        let state = false;
+        if(mode !== undefined){
+          state = mode
+        }
+        if(state){
+          // 有自增主键
+          let data = await get_index(database, table_name, indexName, index);
+          let request = database.transaction([table_name], "readwrite").objectStore(table_name).delete(data.index);
+          request.onsuccess = function (event) {
+            resolve('数据删除成功')
+          };
+        }else{
+          // 无自增主键
+          let request = database.transaction([table_name], "readwrite").objectStore(table_name).delete(index);
+          request.onsuccess = function (event) {
+              resolve('数据删除成功')
+          };
+        }
+    })
+  }
+
+  /**
+   * 删除指定表的所有数据
    * @param {object} database 数据库对象
    * @param {string} table_name 表名  格式['dataone','datatwo'] --可以为多个表同时做操作
-   * @param {string} index 索引 可是主键也可以是索引  
   **/
-  function remove(database,table_name,index) {
-     let request = database.transaction([table_name], "readwrite").objectStore(table_name).delete(index);
+  function clear(database,table_name) {
+     let request = database.transaction([table_name], "readwrite").objectStore(table_name).clear();
      return request
   }
   
@@ -237,9 +285,60 @@ function open_dataBase(name, version) {
   }
   
 
+/**  表操作 -- 功能封装  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────    **/
+
+  /**
+   * 遍历表找到指定属性的指定数据  只支持一层对象       
+   * @param {object} database 数据库对象
+   * @param {string} table_name 表名
+   * @param {string} index 属性名
+   * @param {string} data  属性数据
+  **/
+ function readAll_exist(database,table_name,index,data) {
+    return new Promise((resolve,reject)=>{
+        let state = false;
+        var objectStore = database.transaction([table_name], "readonly").objectStore(table_name);
+        objectStore.openCursor().onsuccess = function (event) {
+            var cursor = event.target.result;
+            if (cursor) {
+              if(cursor.value[index] == data){
+                state = true;
+              }
+              cursor.continue();
+            } else {
+                // console.log('没有更多数据了！',data);
+                resolve(state)
+            }
+        }
+    })
+  }
+  /**
+   * 替换单条数据的某些属性         
+   * @param {object} database         数据库对象
+   * @param {string} table_name       表名
+   * @param {string} indexName        索引名
+   * @param {string} index            索引属性
+   * @param {Array} replace_name     被替换的属性名     属性名和属性数据需要一一对应
+   * @param {Array} replace_data     被替换的属性数据
+  **/
+  function replace(database, table_name, indexName, index, replace_name, replace_data) {
+    return new Promise(async (resolve,reject)=>{
+        let data = await get_index(database, table_name, indexName, index);
+        for (let i = 0; i < replace_name.length; i++) {
+          data[replace_name[i]] = replace_data[i];
+        }
+        let request = update(database, table_name, data);
+        request.onsuccess = function (event) {
+          resolve('更新成功')
+        };
+    })
+  }
+
 export default {
     open_dataBase,
     delete_dataBase,
+    close,
+
     get_table,
     created,
     readAll,
@@ -249,25 +348,13 @@ export default {
     get_index_callback,
     get_main,
     remove,
+    clear,
     addIndex,
     get_count,
     check_list,
-    close,
+
+    readAll_exist,
+    replace,
 };
 
 
-
-//                   --  联系人表
-// 账号名作为数据库
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
-//                   --  聊天数据表账号名 --- 聊天数据  
