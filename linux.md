@@ -13,5 +13,7 @@ vi test.txt，
 esc键退出编辑模式，输入:wq保存并退出。输入:q!不保存退出
 
 
-
-
+删除文件夹
+rm -rf data 
+删除文件
+rm -r data.js 
