@@ -12,7 +12,15 @@ app.get('/', (req, res) => {
 	res.send(html)
 })
 
-
 app.listen(port, () => { 
     console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+
+
+let i = 0;
+
+setInterval(() => {
+    i = i + 1;
+    console.log(i);
+}, 1000);
