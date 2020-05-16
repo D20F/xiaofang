@@ -1,7 +1,7 @@
 
 sadad
 [bar - three](.././config.md)
-[ba - three](./mysql/mysql.md)
+[ba - three](./backEnd/mysql.md)
 ![An image](.././.vuepress/public/logo.png)
 
 | Tables        | Are           | Cool  |
