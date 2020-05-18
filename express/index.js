@@ -18,9 +18,7 @@ app.listen(port, () => {
 
 
 
-let i = 0;
 
 setInterval(() => {
-    i = i + 1;
-    console.log(i);
+   console.log(Math.random())
 }, 1000);

@@ -1,6 +1,6 @@
-# mysql 没有用
-
-# 文档没写
+# mysql 
+mysqlworkbench 未安装
+https://dev.mysql.com/downloads/workbench/
 
 
 

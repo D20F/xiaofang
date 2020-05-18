@@ -12,7 +12,7 @@ features:
   details: node mysql 简单的后端
 - title: 无
   details: 无
-footer: MIT Licensed | Copyright © 2020-present Evan You 于D20F制作
+footer: D20F 倾情制作
 sidebar: auto
 ---
 
