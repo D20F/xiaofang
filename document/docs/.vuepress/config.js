@@ -53,6 +53,7 @@ module.exports = {
             children: [
               ['/D20F/general/git.md','Git'],
               ['/D20F/general/环境安装指南.md','环境安装指南'],
+              ['/D20F/general/Liunx环境配置.md','Liunx环境配置'],
               ['/D20F/general/封装axios.md','封装axios'],
             ]
           },
