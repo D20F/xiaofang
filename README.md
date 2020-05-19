@@ -1,6 +1,6 @@
 # mysql 
-mysqlworkbench 未安装
-https://dev.mysql.com/downloads/workbench/
+liunx环境必备
+git node mysql
 
 
 
