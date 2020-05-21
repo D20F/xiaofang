@@ -37,6 +37,7 @@ module.exports = {
               ['/D20F/frontEnd/js操作.md','js操作'],
               ['/D20F/frontEnd/js应用.md','js应用'],
               ['/D20F/frontEnd/vue.md','vue'],
+              ['/D20F/frontEnd/react.md','react'],
             ]
           },
           {

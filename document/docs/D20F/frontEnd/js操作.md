@@ -227,3 +227,64 @@
   let obj = myNew(person)('chen', 18) // {name: "chen", age: 18}
 }
 ```
+##  进制转换
+```js
+  // 16进制数转10进制
+var ex16hex = function(value){
+  value = stripscript(value);
+    value = value.replace("0x","");
+  var arr = value.split("");
+  arr = arr.reverse();
+  var len = arr.length;
+  var res = 0;
+  $.each(arr, function(i,v){
+      var num = hex_change(v);
+    console.log(num)
+      res += muti16(num, i);
+  });
+  return res;
+}
+
+// 字符转16进制数字
+var hex_change = function(v){
+    var res;
+    switch(v){
+      case "a": res = 10;break;
+    case "b": res = 11;break;
+    case "c": res = 12;break;
+    case "d": res = 13;break;
+    case "e": res = 14;break;
+    case "f": res = 15;break;
+    case "1":
+    case "2":
+    case "3":
+    case "4":
+    case "5":
+    case "6":
+    case "7":
+    case "8":
+    case "9": res = Number(v);break;
+    default: res = 0;break;
+  }
+  return res;
+}
+
+// 过滤所有特殊字符
+var stripscript = function(s) {
+    var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？↵\r\n]");
+        var rs = "";
+    for (var i = 0; i < s.length; i++) {
+        rs = rs + s.substr(i, 1).replace(pattern, '');
+    }
+    return rs;
+}
+
+// 返回 v 乘以 n 个 16 的积
+var muti16 = function(v, n){
+  var temp = v;
+    for(var i = 0; i < n; i++){
+    temp *= 16;
+  }
+  return temp;
+}
+```
