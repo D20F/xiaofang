@@ -15,10 +15,32 @@
       this.setState()
       分别写入后，和minxis差不多浅合并
       只可在this.setState()里改变
-   ### 开始生命周期
-      componentDidMount()    
-   ### 结束生命周期
-      componentWillUnmount() 
+   ### 生命周期
+      挂载
+      当组件实例被创建并插入 DOM 中时，其生命周期调用顺序如下：
+         constructor()
+         static getDerivedStateFromProps()
+         render()
+         componentDidMount()
+
+      更新   
+      当组件的 props 或 state 发生变化时会触发更新。组件更新的生命周期调用顺序如下：
+         static getDerivedStateFromProps()
+         shouldComponentUpdate()
+         render()
+         getSnapshotBeforeUpdate()
+         componentDidUpdate()
+
+      卸载
+      当组件从 DOM 中移除时会调用如下方法：
+         componentWillUnmount()
+
+      错误处理
+         当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：
+         static getDerivedStateFromError()
+         componentDidCatch()
+
+
    ### 渲染函数
       render()
    ### 事件
@@ -146,6 +168,7 @@
    ```
  ##  Fragments
  ``` js
+   用来使组件返回多个元素节点
    render() {
       return (
          <React.Fragment>
@@ -165,10 +188,27 @@
  ``` js
     没搞懂
  ```
- ##  
+ ##  Hook
  
  ``` js
-    
+   一个专门的Hook函数
+   function useFriendStatus(friendID) {
+      初始化一下
+      const [isOnline, setIsOnline] = useState(friendID);
+      
+      里面可以执行一下需要的操作，后面的[]可以规定只对特定的数值更新
+      useEffect(() => {
+         setIsOnline(friendID);    
+         return console.log(1)
+      },[friendID]);
+
+      输出数值和改变函数
+      return {
+         isOnline,
+         setIsOnline,
+      }
+
+   }
  ```
 
 

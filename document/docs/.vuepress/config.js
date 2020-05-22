@@ -36,8 +36,6 @@ module.exports = {
               ['/D20F/frontEnd/dom.md','dom'],
               ['/D20F/frontEnd/js操作.md','js操作'],
               ['/D20F/frontEnd/js应用.md','js应用'],
-              ['/D20F/frontEnd/vue.md','vue'],
-              ['/D20F/frontEnd/react.md','react'],
             ]
           },
           {
@@ -46,6 +44,15 @@ module.exports = {
             children: [
               ['/D20F/backEnd/mysql.md','Mysql'],
               ['/D20F/backEnd/linux.md','Liunx'],
+            ]
+          },
+          {
+            title: '框架',   // 必要的 frame
+            sidebarDepth: 3, 
+            children: [
+              ['/D20F/frame/vue.md','vue'],
+              ['/D20F/frame/react.md','react'],
+              ['/D20F/frame/react_router.md','react_router'],
             ]
           },
           {
