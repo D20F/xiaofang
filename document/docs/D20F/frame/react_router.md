@@ -36,6 +36,10 @@ class Jump extends React.Component {
   componentDidMount(){
     let { history } = this.props
     history.push({pathname: '/',query:{a:1}})
+    // 或者
+    // this.props.history.push({pathname: '/',query:{a:1}})
+    // 获取路由参数
+    console.log(this.props.location.query)
   }
 }
 ```
@@ -53,34 +57,11 @@ class Jump extends React.Component {
 
 
 
- ##  常识
+ ##  路由守卫呢?
  ``` js
-    console.log(1)
+    没有
  ```
- ##  常识
- ``` js
- 
- ```
- ##  常识
- ``` js
- 
- ```
- ##  常识
- ``` js
- 
- ```
- ##  常识
- ``` js
- 
- ```
- ##  常识
- ``` js
- 
- ```
- ##  常识
- ``` js
- 
- ```
+
 
 
 

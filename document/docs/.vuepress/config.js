@@ -53,6 +53,7 @@ module.exports = {
               ['/D20F/frame/vue.md','vue'],
               ['/D20F/frame/react.md','react'],
               ['/D20F/frame/react_router.md','react_router'],
+              ['/D20F/frame/react_redux.md','react_redux'],
             ]
           },
           {
@@ -63,6 +64,7 @@ module.exports = {
               ['/D20F/general/环境安装指南.md','环境安装指南'],
               ['/D20F/general/Liunx环境配置.md','Liunx环境配置'],
               ['/D20F/general/封装axios.md','封装axios'],
+              ['/D20F/general/网站收藏.md','网站收藏'],
             ]
           },
           {
