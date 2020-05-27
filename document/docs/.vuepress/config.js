@@ -54,6 +54,7 @@ module.exports = {
               ['/D20F/frame/react.md','react'],
               ['/D20F/frame/react_router.md','react_router'],
               ['/D20F/frame/react_redux.md','react_redux'],
+              ['/D20F/frame/react_native.md','react_native'],
             ]
           },
           {

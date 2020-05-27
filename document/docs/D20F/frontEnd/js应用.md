@@ -193,3 +193,13 @@ Function.prototype.myCall = function(thisArg, ...args) {
     return result                  // 返回函数执行结果
 }
 ```
+ ## 时间
+ ``` js
+
+            设置时间 
+            var day2 = new Date();
+            day2.setHours(0);
+            day2.setMinutes(0);
+            day2.setSeconds(0);
+            day2.setMilliseconds(0);
+ ```
