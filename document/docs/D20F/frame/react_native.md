@@ -29,11 +29,11 @@ react-native bundle --platform android --dev false --entry-file index.android.js
 执行这句命令后会在新建的assets文件夹下生成一个index.android.bundle文件</br>
 3、 项目中执行react-native run-android，成功启动</br>
 
-## []()
-
-
-
+## [adb]()
+使用安卓Android adb命令调试
+adb devices
 adb reverse tcp:8081 tcp:8081
+
 
     
 
