@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Canvas | D的文档</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="Just playing around">
+    <link rel="preload" href="/assets/css/0.styles.0b318b54.css" as="style"><link rel="preload" href="/assets/js/app.aed24b32.js" as="script"><link rel="preload" href="/assets/js/2.c007adf7.js" as="script"><link rel="preload" href="/assets/js/18.51492f71.js" as="script"><link rel="prefetch" href="/assets/js/10.37215fcc.js"><link rel="prefetch" href="/assets/js/11.a0b706ef.js"><link rel="prefetch" href="/assets/js/12.288e2f9f.js"><link rel="prefetch" href="/assets/js/13.c265081f.js"><link rel="prefetch" href="/assets/js/14.49376f98.js"><link rel="prefetch" href="/assets/js/15.e33f052e.js"><link rel="prefetch" href="/assets/js/16.4a828c4e.js"><link rel="prefetch" href="/assets/js/17.f221548e.js"><link rel="prefetch" href="/assets/js/19.380c5760.js"><link rel="prefetch" href="/assets/js/20.03772f24.js"><link rel="prefetch" href="/assets/js/21.e9a64eef.js"><link rel="prefetch" href="/assets/js/22.1e433375.js"><link rel="prefetch" href="/assets/js/23.2e24795d.js"><link rel="prefetch" href="/assets/js/24.8a385680.js"><link rel="prefetch" href="/assets/js/25.24480817.js"><link rel="prefetch" href="/assets/js/26.cf50f065.js"><link rel="prefetch" href="/assets/js/27.5dd647b9.js"><link rel="prefetch" href="/assets/js/28.1393e7f6.js"><link rel="prefetch" href="/assets/js/29.6f9e5f64.js"><link rel="prefetch" href="/assets/js/3.742a8739.js"><link rel="prefetch" href="/assets/js/30.9fa2ee63.js"><link rel="prefetch" href="/assets/js/31.4f45d84d.js"><link rel="prefetch" href="/assets/js/4.3963ad04.js"><link rel="prefetch" href="/assets/js/5.9afba1a0.js"><link rel="prefetch" href="/assets/js/6.f781966f.js"><link rel="prefetch" href="/assets/js/7.19b30663.js"><link rel="prefetch" href="/assets/js/8.1d24c89b.js"><link rel="prefetch" href="/assets/js/9.14da7f00.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0b318b54.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="D的文档" class="logo"> <span class="site-name can-hide">D的文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="https://github.com/D20F" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://106.53.202.188:8080" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人项目展示
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="https://github.com/D20F" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://106.53.202.188:8080" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人项目展示
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>前端</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/D20F/frontEnd/indexedOB.html" class="sidebar-link">indexedOB</a></li><li><a href="/D20F/frontEnd/canvas.html" class="active sidebar-link">canvas</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/D20F/frontEnd/canvas.html#设置图片" class="sidebar-link">设置图片</a></li><li class="sidebar-sub-header"><a href="/D20F/frontEnd/canvas.html#画" class="sidebar-link">画</a></li><li class="sidebar-sub-header"><a href="/D20F/frontEnd/canvas.html#图片设置" class="sidebar-link">图片设置</a></li></ul></li><li><a href="/D20F/frontEnd/面试难题.html" class="sidebar-link">面试难题</a></li><li><a href="/D20F/frontEnd/dom.html" class="sidebar-link">dom</a></li><li><a href="/D20F/frontEnd/js操作.html" class="sidebar-link">js操作</a></li><li><a href="/D20F/frontEnd/js应用.html" class="sidebar-link">js应用</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>后端</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>框架</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>通用</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Cocos</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Css</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="canvas"><a href="#canvas" class="header-anchor">#</a> Canvas</h1> <h2 id="设置图片"><a href="#设置图片" class="header-anchor">#</a> 设置图片</h2> <div class="language-js extra-class"><pre class="language-js"><code> <span class="token function">createPattern</span><span class="token punctuation">(</span><span class="token punctuation">)</span>	在指定的方向上重复指定的元素
+ <span class="token keyword">var</span> pat<span class="token operator">=</span>ctx<span class="token punctuation">.</span><span class="token function">createPattern</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span><span class="token string">&quot;repeat&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ ctx<span class="token punctuation">.</span><span class="token function">rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>canvas<span class="token punctuation">.</span>width<span class="token punctuation">,</span>canvas<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ ctx<span class="token punctuation">.</span>fillStyle<span class="token operator">=</span>pat<span class="token punctuation">;</span>
+ ctx<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="画"><a href="#画" class="header-anchor">#</a> 画</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">rect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>	        创建矩形
+<span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>	    绘制“被填充”的矩形
+<span class="token function">strokeRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>	    绘制矩形（无填充）
+<span class="token function">clearRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>	    在给定的矩形内清除指定的像素
+
+</code></pre></div><h2 id="图片设置"><a href="#图片设置" class="header-anchor">#</a> 图片设置</h2> <div class="language-js extra-class"><pre class="language-js"><code>context<span class="token punctuation">.</span><span class="token function">drawImage</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span>sx<span class="token punctuation">,</span>sy<span class="token punctuation">,</span>swidth<span class="token punctuation">,</span>sheight<span class="token punctuation">,</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>width<span class="token punctuation">,</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+img	    规定要使用的图像、画布或视频。
+sx	    可选。开始剪切的 x 坐标位置。
+sy	    可选。开始剪切的 y 坐标位置。
+swidth	可选。被剪切图像的宽度。
+sheight	可选。被剪切图像的高度。
+x	    在画布上放置图像的 x 坐标位置。
+y	    在画布上放置图像的 y 坐标位置。
+width	可选。要使用的图像的宽度。（伸展或缩小图像）
+height	可选。要使用的图像的高度。（伸展或缩小图像）
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/D20F/frontEnd/indexedOB.html" class="prev">
+        indexedOB
+      </a></span> <span class="next"><a href="/D20F/frontEnd/面试难题.html">
+        面试难题
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.aed24b32.js" defer></script><script src="/assets/js/2.c007adf7.js" defer></script><script src="/assets/js/18.51492f71.js" defer></script>
+  </body>
+</html>

@@ -29,10 +29,185 @@ react-native bundle --platform android --dev false --entry-file index.android.js
 执行这句命令后会在新建的assets文件夹下生成一个index.android.bundle文件</br>
 3、 项目中执行react-native run-android，成功启动</br>
 
-## [adb]()
-使用安卓Android adb命令调试
-adb devices
+## 打包
+  按照官网的方式加秘钥打包，貌似app图标图片，混合出错了
+
+  这种貌似有问题</br>
+  cd android && ./gradlew clean</br>
+  gradlew assembleRelease -x bundleReleaseJsAndAssets
+
+## [运行]()
+首先npm start 开启服务
+使用安卓Android adb命令
 adb reverse tcp:8081 tcp:8081
+查看是否连接模拟器
+adb devices
+模拟器上运行开启
+react-native run-android
+
+## [注意事项]()
+使用定时器一定要手动清除
+
+## [Animated 动画]()
+组合动画 动画还可以使用组合函数以复杂的方式进行组合：</br>
+  Animated.delay()在给定延迟后开始动画。</br>
+  Animated.parallel()同时启动多个动画。</br>
+  Animated.sequence()按顺序启动动画，等待每一个动画完成后再开始下一个动画。</br>
+  Animated.stagger()按照给定的延时间隔，顺序并行的启动动画。</br>
+配置动画</br>
+  Animated.decay()以指定的初始速度开始变化，然后变化速度越来越慢直至停下。</br>
+  Animated.spring()提供了一个基础的弹簧物理模型.</br>
+  Animated.timing()使用easing 函数让数值随时间动起来</br>
+  ### [实例]()
+```js
+import Animated from 'react-native'
+const FadeInView = (props) => {
+  // 使用hook 设置初始值设为0
+  const [fadeAnim] = useState(new Animated.Value(0))  
+  // hook生命周期开始动画
+  React.useEffect(() => {
+    // 顺序执行 Animated.sequence
+    Animated.sequence([
+      //Animated.spring 弹性模型动画 会弹一下
+      Animated.spring(fadeAnim, {
+        toValue: 200, //设置值 fadeAnim的值变为设置值
+        friction: 7,  //弹性系数
+        tension: 40, //速度系数
+      }),
+      //Animated.timing 随着缓动函数的动画 ，不给缓动函数，就是持续速度动画
+      Animated.timing(fadeAnim,{
+        toValue: 100,  //设置值 fadeAnim的值变为设置值                  
+        duration: 1000,  //动画持续时间           
+      }),        
+      // 同时执行 Animated.parallel
+      Animated.parallel([
+        // Animated.decay 推动一个值以一个初始的速度和一个衰减系数逐渐变为 0。
+        Animated.decay(fadeAnim,{
+          velocity: -.5,     //初始速度
+          deceleration: 0.997, //衰减速度 貌似不可更改 不填写默认为0.997
+        }),              
+        Animated.decay(fadeAnim,{
+          velocity: 1,
+          deceleration: 0.997,
+        }),              
+      ])
+    ]).start(); //start()开始动画咯
+  }, [])
+  return (
+    <Animated.View                 // 使用专门的可动画化的View组件
+      style={{
+        ...props.style,
+        opacity: fadeAnim,         // 将透明度绑定到动画变量值
+        top: fadeAnim,         // 将透明度绑定到动画变量值
+      }}
+    >
+      {props.children}    {/* react的组合 默认给子组件 */}
+    </Animated.View>
+  );
+}
+export default class Test extends Component {
+  render() {
+    return (
+      <View style={{flex: 1,flexDirection: 'row',justifyContent: 'center',}}>
+        <FadeInView>
+          <View style={{top:0,width: 50, height: 50, backgroundColor: 'steelblue'}} />
+        </FadeInView>
+      </View>
+    )
+  }
+}
+```
+ ## [点击触摸]()
+```js
+export default class Test extends Component {
+  render() {
+    return (
+      <TouchableHighlight  
+        onPressIn={() => console.log('点击开始')}
+        onPressOut={() => console.log('点击结束或者离开')}
+        onPress={() => console.log('单击事件回调')}
+        onLongPress={() => console.log('长按事件回调')}
+      >
+        <View></View>
+      </TouchableHighlight>  
+    );
+  }
+}
+```
+ ## [单组件触摸事件]()
+
+evt是一个合成事件
+  evt.nativeEvent有以下字段:
+|         |            |   
+| ------------- |:-------------:| 
+|changedTouches | 在上一次事件之后，所有发生变化的触摸事件的数组集合（即上一次事件后，所有移动过的触摸点）|
+|identifier | 触摸点的 ID
+|locationX  | 触摸点相对于当前元素的横坐标           |
+|locationY  | 触摸点相对于当前元素的纵坐标           |
+|pageX      | 触摸点相对于根元素的横坐标             |
+|pageY      | 触摸点相对于根元素的纵坐标             |
+|target     | 触摸点所在的元素 ID                   |
+|timestamp  | 触摸事件的时间戳，可用于移动速度的计算  |
+|touches    | 当前屏幕上的所有触摸点的集合           |
+  gestureState有一下字段:
+|         |            |   
+| ------------- |:-------------:| 
+|stateID | 触摸状态的 ID。在屏幕上有至少一个触摸点的情况下，这个 ID 会一直有效 |
+|moveX   | 最近一次移动时的屏幕横坐标                   |
+|moveY   | 最近一次移动时的屏幕纵坐标                   |
+|x0      | 当响应器产生时的屏幕坐标                     |
+|y0      | 当响应器产生时的屏幕坐标                     |
+|dx      | 从触摸操作开始时的累计横向路程                |
+|dy      | 从触摸操作开始时的累计纵向路程                |
+|vx      | 当前的横向移动速度                           |
+|vy      | 当前的纵向移动速度                           |
+|numberActiveTouches | 当前在屏幕上的有效触摸点的数量    |
+```js
+  export default class Test extends Component {
+  componentWillMount(){
+    // 设置触摸事件 封装成一个函数  PanResponder 创建
+    this._panResponder = PanResponder.create({
+        // 开始触摸的时候是否愿意成为响应者，返回true成为响应者
+        onStartShouldSetPanResponder: (evt, gestureState) => {
+          return true;
+        },
+        // 开始移动的时候是否愿意成为响应者，返回true成为响应者
+        onMoveShouldSetPanResponder:  (evt, gestureState) => {
+            return true;
+        },
+        // View 现在要开始响应触摸事件了
+        onPanResponderGrant: (evt, gestureState) => {
+
+        },
+        // 用户正在屏幕上移动手指时（没有停下也没有离开屏幕）
+        onPanResponderMove: (evt, gestureState) => {
+
+        },
+        // 触摸操作结束时触发，比如"touchUp"（手指抬起离开屏幕）。
+        onPanResponderRelease: (evt, gestureState) => {
+
+        },
+        // 有其他组件请求接替响应者，当前的 View 是否“放权”？返回 true 的话则释放响应者权力。
+        onPanResponderTerminate: (evt, gestureState) => {
+          
+        },
+    });
+  }
+
+  render() {
+    return (
+        <View style={styles.container}>
+                <View 
+                  // 将写好的手势函数放到需要监控的组件内
+                  {...this._panResponder.panHandlers}
+                >
+                </View>
+        </View>
+    );
+  }
+}
+```
+
 
 
     
