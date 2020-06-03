@@ -51,6 +51,8 @@ module.exports = {
             sidebarDepth: 3, 
             children: [
               ['/D20F/frame/vue.md','vue'],
+              ['/D20F/frame/vuex.md','vuex'],
+              ['/D20F/frame/vuerouter.md','vuerouter'],
               ['/D20F/frame/react.md','react'],
               ['/D20F/frame/react_router.md','react_router'],
               ['/D20F/frame/react_redux.md','react_redux'],
@@ -82,6 +84,14 @@ module.exports = {
             children: [
               ['/D20F/css/面试css.md','面试css'],
               ['/D20F/css/样式记忆.md','样式记忆'],
+            ]
+          },
+          {
+            title: 'interview',   // 
+            sidebarDepth: 3, 
+            children: [
+              ['/D20F/interview/axios.md','axios'],
+              ['/D20F/interview/webpack.md','webpack'],
             ]
           },
         ]
