@@ -56,7 +56,15 @@ module.exports = {
               ['/D20F/frame/react.md','react'],
               ['/D20F/frame/react_router.md','react_router'],
               ['/D20F/frame/react_redux.md','react_redux'],
-              ['/D20F/frame/react_native.md','react_native'],
+              ['/D20F/frame/wxchat.md','wxchat'],
+            ]
+          },
+          {
+            title: '混合开发',   // 必要的 webApp
+            sidebarDepth: 3, 
+            children: [
+              ['/D20F/webApp/react_native.md','react_native'],
+              ['/D20F/webApp/taro.md','taro'],
             ]
           },
           {

@@ -12,12 +12,23 @@ studio里面SDK存放的路径</br>
 C:\Users\Administrator\AppData\Local\Android\Sdk</br>
 SDK存放在 C:\Users\Administrator\AppData\Local\Android\Sdk\platforms</br>
 SDK命名都是以API等级为命名的，从微云下载的话，需改名 android-27(8.0)，去掉括号</br>
+  ### [Android-NDK]()
+NDK NDK-r10e版本的:下载地址</br>
+https://developer.android.google.cn/ndk/downloads/older_releases</br>
+腾讯微云也有r10e的</br>
+需要有ndk不然无法打包,好像是必须r10e版本的</br>
   ### [gradle]()
 gradle 打包用的，好像也要翻墙</br>
   ### [python]()
 下载python 2版本的即可 我用的是 python-2.7.2.amd64 版本</br>
   ### [资源]()
 都存在腾讯微云了
+
+## [配套框架]()
+  UI: Ant Design Mobile RN</br>
+  路由: react-navigation</br>
+  数据管理: redux</br>
+  基本流程和react使用一样就是props不能直接显示整个对象，需使用解构语法拿出想要的值</br>
 
 ## [报错踩坑]()
   ### [红屏报错]()
@@ -30,11 +41,11 @@ react-native bundle --platform android --dev false --entry-file index.android.js
 3、 项目中执行react-native run-android，成功启动</br>
 
 ## 打包
-  按照官网的方式加秘钥打包，貌似app图标图片，混合出错了
-
-  这种貌似有问题</br>
-  cd android && ./gradlew clean</br>
-  gradlew assembleRelease -x bundleReleaseJsAndAssets
+  正常流程肯定是没错的
+  cd android
+  gradlew assembleRelease
+  打包后的release 版本只能在手机上安装，模拟器安装会闪退
+  
 
 ## [运行]()
 首先npm start 开启服务
