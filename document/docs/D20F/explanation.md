@@ -1,3 +1,7 @@
+---
+sidebar: false
+---
+
 ## 1 Markdown Nice 简介
 标题
 [[toc]]
