@@ -25,21 +25,21 @@ gradle 打包用的，好像也要翻墙</br>
 都存在腾讯微云了
 
 ## [配套框架]()
-  UI: Ant Design Mobile RN</br>
-  路由: react-navigation</br>
-  需要安装以下 7个库才可以运行
-  ```js
-  @react-navigation/native
-  @react-native-community/masked-view
-  react-native-gesture-handler
-  @react-navigation/stack
-  react-native-reanimated
-  react-native-safe-area-context
-  react-native-screens
-  ```
-  数据管理: redux</br>
-  基本流程和react使用一样就是props不能直接显示整个对象，需使用解构语法拿出想要的值</br>
+  **redux**
+  - react-redux
+  - redux
 
+  **Ant Design Mobile RN**
+
+  网址 https://rn.mobile.ant.design/components/flex-cn/
+
+  - @ant-design/react-native
+
+
+  **路由 react navigation**
+  - @react-navigation/native
+
+  
 ## [报错踩坑]()
   ### [红屏报错]()
 报错提示：Unable to load script.Make sure you're either running a metro server（ run 'react-native start' ） or that your bundle 'index.android.bundle' is packaged correctly for release.</br>
