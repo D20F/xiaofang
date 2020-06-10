@@ -174,14 +174,14 @@ function App() {
             headerLeft: props => <LogoTitle {...props} />,
           })}
         />
-        <Tab.Screen name="Home" component={CreatePostScreen} />
+        <Stack.Screen name="Home" component={CreatePostScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 ```
 
-## 堆栈导航器 - 标题栏
+## 底部导航器 - 标题栏
 ::: tip
 setOptions 可以在组件内再次设置标题栏属性
 :::

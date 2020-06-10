@@ -55,7 +55,9 @@ react-native bundle --platform android --dev false --entry-file index.android.js
   cd android
   gradlew assembleRelease
   打包后的release 版本只能在手机上安装，模拟器安装会闪退
-  
+ ### 启动页设置
+ 切分辨率图标: https://makeappicon.com/
+ 启动页插件 react-native-splash-screen  
 
 ## [运行]()
 首先npm start 开启服务
