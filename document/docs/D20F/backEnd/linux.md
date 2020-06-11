@@ -65,3 +65,18 @@ ps -ef
 
 杀死进程 pid为对应的进程pid</br>
 kill -s 9 pid
+
+## pm2
+安装
+npm install pm2 -g
+
+创建软连接
+ln -s /root/node-v10.14.2-linux-x64/bin/pm2 /usr/local/bin/
+查看进程
+pm2 list
+启动
+pm2 start index.js
+结束线程
+pm2 delete name
+结束所有线程
+pm2 delete all
