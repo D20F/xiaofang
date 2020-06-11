@@ -56,3 +56,12 @@ vi test.txt，
 esc键退出编辑模式，输入:wq保存并退出。输入:q!不保存退出
 ```
 
+## 进程
+持续化node</br>
+node index.js &
+
+查找所有进程</br>
+ps -ef
+
+杀死进程 pid为对应的进程pid</br>
+kill -s 9 pid
