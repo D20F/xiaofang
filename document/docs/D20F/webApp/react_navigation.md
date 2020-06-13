@@ -17,7 +17,7 @@
   3. **底部导航器**
   - @react-navigation/bottom-tabs
   
-  4. **侧边导航器**
+  4. **抽屉导航器**
   - @react-navigation/drawer
 
   5. **水平滑动导航器**
@@ -193,8 +193,8 @@ setOptions 可以在组件内再次设置标题栏属性
 ``` js
 import * as React from 'react';
 import { View, Text, Button, TextInput, Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 
 function HomeScreen() {
   return (
@@ -258,7 +258,7 @@ function App() {
 }
 export default App;
 ```
-## 侧边导航器 - 标题栏
+## 抽屉导航器 - 标题栏
 ::: tip
 setOptions 可以在组件内再次设置标题栏属性
 :::

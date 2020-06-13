@@ -230,9 +230,46 @@ evt是一个合成事件
   }
 }
 ```
-
-
-
+## ant Design Mobile RN
+``` js
+  // icon 为antd react的图标 名字小写，再去掉后面的标识就行了
+  import { Icon } from '@ant-design/react-native';
+  <Icon name={'wechat'} color = {'#69c0ff'}/>
+```
+## native组件
+|               |               |   
+| ------------- |:-------------:| 
+| ActivityIndicator              |   圆形的 loading 提示符号           |
+| Button              |   按钮           |
+| DatePickerIOS              |   ios平台的日期/时间选择器          |
+| DrawerLayoutAndroid              |   抽屉侧边栏            |
+| FlatList              |   高性能的简单列表组件            |
+| Image              |   图片            |
+| ImageBackground              |   背景图片容器            |
+| KeyboardAvoidingView              |   在里面的内容,在键盘弹出会时会调整自身位置            |
+| MaskedView              |   安卓 - 蒙版元素，给元素披上一层颜色            |
+| MaskedViewIOS              |   苹果 - 蒙版元素,给元素披上一层颜色            |
+| Modal              |   覆盖在其他视图之上显示内容的容器。            |
+| Picker              |   安卓 - 一个下拉选择器            |
+| PickerIOS              |   苹果 - 一个下拉选择器            |
+| ProgressBarAndroid              |   安卓 - 静态或者动态,条形或者圆形进度条,            |
+| ProgressViewIOS              |   苹果 - 静态或者动态,条形或者圆形进度条,            |
+| RefreshControl              |   在ScrollView或ListView内部,添加下拉刷新的功能            |
+| SafeAreaView              |   在一个安全的可视区域内渲染内容,因为水滴屏，异形屏问题            |
+| ScrollView              |   滚动视图组件            |
+| DrawerLayoutAndroid              |   cccc            |
+| DrawerLayoutAndroid              |   cccc            |
+| DrawerLayoutAndroid              |   cccc            |
+| DrawerLayoutAndroid              |   cccc            |
+| DrawerLayoutAndroid              |   cccc            |
+|               |              |
+|               |              |
+|               |              |
+|               |              |
+|               |              |
+|               |              |
+|               |              |
+|               |              |
     
 
 
