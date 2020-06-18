@@ -81,7 +81,7 @@ react-native run-android
   Animated.decay()以指定的初始速度开始变化，然后变化速度越来越慢直至停下。</br>
   Animated.spring()提供了一个基础的弹簧物理模型.</br>
   Animated.timing()使用easing 函数让数值随时间动起来</br>
-  ### [实例]()
+  ### [普通例子]()
 ```js
 import Animated from 'react-native'
 const FadeInView = (props) => {
@@ -139,6 +139,143 @@ export default class Test extends Component {
     )
   }
 }
+```
+### [Easing 缓动函数]()
+``` js
+import React from "react";
+import { Animated, Easing, SectionList, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+const App = () => {
+  let opacity = new Animated.Value(0);
+  const animate = easing => {
+    opacity.setValue(0);
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 1200,
+      easing
+    }).start();
+  };
+  const size = opacity.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 80]
+  });
+  const animatedStyles = [
+    styles.box,
+    {
+      opacity,
+      width: size,
+      height: size
+    }
+  ];
+  return (
+    <View style={styles.container}>
+      <StatusBar hidden={true} />
+      <Text style={styles.title}>
+        Press rows below to preview the Easing!
+      </Text>
+      <View style={styles.boxContainer}>
+        <Animated.View style={animatedStyles} />
+      </View>
+      <SectionList
+        style={styles.list}
+        sections={SECTIONS}
+        keyExtractor={(item) => item.title}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => animate(item.easing)}
+            style={styles.listRow}
+          >
+            <Text>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+        renderSectionHeader={({ section: { title } }) => (
+          <Text style={styles.listHeader}>{title}</Text>
+        )}
+      />
+    </View>
+  );
+};
+const SECTIONS = [
+  {
+    title: "Predefined animations",
+    data: [
+      { title: "Bounce", easing: Easing.bounce },
+      { title: "Ease", easing: Easing.ease },
+      { title: "Elastic", easing: Easing.elastic(4) }
+    ]
+  },
+  {
+    title: "Standard functions",
+    data: [
+      { title: "Linear", easing: Easing.linear },
+      { title: "Quad", easing: Easing.quad },
+      { title: "Cubic", easing: Easing.cubic }
+    ]
+  },
+  {
+    title: "Additional functions",
+    data: [
+      {
+        title: "Bezier",
+        easing: Easing.bezier(0, 2, 1, -1)
+      },
+      { title: "Circle", easing: Easing.circle },
+      { title: "Sin", easing: Easing.sin },
+      { title: "Exp", easing: Easing.exp }
+    ]
+  },
+  {
+    title: "Combinations",
+    data: [
+      {
+        title: "In + Bounce",
+        easing: Easing.in(Easing.bounce)
+      },
+      {
+        title: "Out + Exp",
+        easing: Easing.out(Easing.exp)
+      },
+      {
+        title: "InOut + Elastic",
+        easing: Easing.inOut(Easing.elastic(1))
+      }
+    ]
+  }
+];
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#20232a"
+  },
+  title: {
+    marginTop: 10,
+    textAlign: "center",
+    color: "#61dafb"
+  },
+  boxContainer: {
+    height: 160,
+    alignItems: "center"
+  },
+  box: {
+    marginTop: 32,
+    borderRadius: 4,
+    backgroundColor: "#61dafb"
+  },
+  list: {
+    backgroundColor: "#fff"
+  },
+  listHeader: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    backgroundColor: "#f4f4f4",
+    color: "#999",
+    fontSize: 12,
+    textTransform: "uppercase"
+  },
+  listRow: {
+    padding: 8
+  }
+});
+export default App;
 ```
  ## [点击触摸]()
 ```js
@@ -237,39 +374,67 @@ evt是一个合成事件
   <Icon name={'wechat'} color = {'#69c0ff'}/>
 ```
 ## native组件
-|               |               |   
-| ------------- |:-------------:| 
-| ActivityIndicator              |   圆形的 loading 提示符号           |
-| Button              |   按钮           |
-| DatePickerIOS              |   ios平台的日期/时间选择器          |
-| DrawerLayoutAndroid              |   抽屉侧边栏            |
-| FlatList              |   高性能的简单列表组件            |
-| Image              |   图片            |
-| ImageBackground              |   背景图片容器            |
-| KeyboardAvoidingView              |   在里面的内容,在键盘弹出会时会调整自身位置            |
-| MaskedView              |   安卓 - 蒙版元素，给元素披上一层颜色            |
-| MaskedViewIOS              |   苹果 - 蒙版元素,给元素披上一层颜色            |
-| Modal              |   覆盖在其他视图之上显示内容的容器。            |
-| Picker              |   安卓 - 一个下拉选择器            |
-| PickerIOS              |   苹果 - 一个下拉选择器            |
+| native组件                      |               |   
+| -------------                   |:-------------:| 
+| ActivityIndicator               |   圆形的 loading 提示符号           |
+| Button                          |   按钮           |
+| DatePickerIOS                   |   ios平台的日期/时间选择器          |
+| DrawerLayoutAndroid             |   抽屉侧边栏            |
+| FlatList                        |   高性能的简单列表组件            |
+| Image                           |   图片            |
+| ImageBackground                 |   背景图片容器            |
+| KeyboardAvoidingView            |   在里面的内容,在键盘弹出会时会调整自身位置            |
+| MaskedView                      |   安卓 - 蒙版元素，给元素披上一层颜色            |
+| MaskedViewIOS                   |   IOS - 蒙版元素,给元素披上一层颜色            |
+| Modal                           |   覆盖在其他视图之上显示内容的容器。            |
+| Picker                          |   安卓 - 一个下拉选择器            |
+| PickerIOS                       |   IOS - 一个下拉选择器            |
 | ProgressBarAndroid              |   安卓 - 静态或者动态,条形或者圆形进度条,            |
-| ProgressViewIOS              |   苹果 - 静态或者动态,条形或者圆形进度条,            |
-| RefreshControl              |   在ScrollView或ListView内部,添加下拉刷新的功能            |
-| SafeAreaView              |   在一个安全的可视区域内渲染内容,因为水滴屏，异形屏问题            |
-| ScrollView              |   滚动视图组件            |
-| DrawerLayoutAndroid              |   cccc            |
-| DrawerLayoutAndroid              |   cccc            |
-| DrawerLayoutAndroid              |   cccc            |
-| DrawerLayoutAndroid              |   cccc            |
-| DrawerLayoutAndroid              |   cccc            |
-|               |              |
-|               |              |
-|               |              |
-|               |              |
-|               |              |
-|               |              |
-|               |              |
-|               |              |
+| ProgressViewIOS                 |   IOS - 静态或者动态,条形或者圆形进度条,            |
+| RefreshControl                  |   在ScrollView或ListView内部,添加下拉刷新的功能            |
+| SafeAreaView                    |   在一个安全的可视区域内渲染内容,因为水滴屏，异形屏问题            |
+| ScrollView                      |   滚动视图组件容器            |
+| SectionList                     |   高性能的分组列表组件            |
+| SegmentedControlIOS             |   IOS - 上的切换按钮            |
+| Slider                          |   IOS -滑块组件            |
+| StatusBar                       |   设置手机上方的状态栏,就是时间 网络提示哪里。实现真正的全屏功能            |
+| StyleSheet                      |   JS设置样式            |
+| Switch                          |   开关组件,一个开关按钮            |
+| Text                            |   显示文本            |
+| TextInput                       |   input组件,给用户输入信息            |
+| TouchableHighlight              |   触摸容器,简单动画            |
+| TouchableNativeFeedback         |   触摸容器,可以做水波纹动画            |
+| TouchableOpacity                |   触摸容器,简单动画,透明度为主            |
+| View                            |   基础组件            |
+| VirtualizedList                 |   懒加载的列表            |
+
+## native API
+| native API              |               |   
+| ------------- |:-------------:| 
+| AccessibilityInfo                          |   询屏幕阅读器的当前状态           |
+| Animated                          |   创建动画           |
+| AppState                          |   区分前台后台           |
+| AsyncStorage                          |   持久化的Key-Value存储系统代替LocalStorage           |
+| BackHandler                           |   监听设备上的后退按钮事件           |
+| CameraRoll                          |   访问本地相册的功能           |
+| Clipboard                          |   控制剪贴板,读写剪贴板中的内容           |
+| Dimensions                          |   获取设备屏幕的宽高           |
+| Easing                          |   动画缓动函数,配合动画           |
+| Geolocation                          |   地理位置API 需要翻墙，国内无法使用           |
+| ImageEditor                          |   安卓 - 裁剪图片           |
+| ImagePickerIOS                          |   IOS - 裁剪图片           |
+| Button                          |   按钮           |
+
+## native API组件
+|  native API组件             |               |   
+| ------------- |:-------------:| 
+| Alert                          |   创建一个弹窗           |
+| AlertIOS                          |   IOS专属弹窗           |
+| ActionSheetIOS                          |   IOS底部弹出框           |
+| DatePickerAndroid                          |   安卓 - 日历组件,颜值很高           |
+| Button                          |   按钮           |
+
+
     
 
 

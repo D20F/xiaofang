@@ -91,7 +91,7 @@
 ```
 ## Promise 使用方法
 ```js
-{
+
   var promise1 = new Promise((resolve, reject) => {
     setTimeout(function() {
     resolve('成功');
@@ -103,7 +103,43 @@
   }).then((resolve,reject)=>{
     console.log(reject);
   })
+
+then传递值外加函数传值
+function name() {
+    return new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            resolve(1);
+        }, 2000);
+    })
 }
+
+let name = new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            resolve(1);
+             console.error(1);
+        }, 2000);
+    })
+function funs(){
+    console.log(212131)
+}
+function fun (callback){
+    let a = name.then((res)=>{
+        console.log(res);
+        callback();
+        console.error(1);
+        return res
+    }).catch((err)=>{
+        console.log(err)
+    })
+    return a
+}
+let s = fun(funs);
+s.then((res)=>{
+    console.log(res);
+}).catch((err)=>{
+    console.log(err)
+})
+
 ```
 ##  继承 方法一  原型链继承
 ```js

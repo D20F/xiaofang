@@ -203,3 +203,57 @@ Function.prototype.myCall = function(thisArg, ...args) {
             day2.setSeconds(0);
             day2.setMilliseconds(0);
  ```
+
+
+## websocket
+``` js
+    import store from '../store/index'
+
+const suffix = '/socket.io/?EIO=3&transport=websocket';
+let socket = null;
+const send = (data = null) => {
+	if(data === null) {
+    socket.send('40/scatter');
+    socket.send('40/block');
+  } else {
+    socket.send('42/scatter,' + JSON.stringify(['api', data]));
+  }
+}
+
+export default class ClientSocket {
+  static link() {
+		return new Promise(async (resolve, reject) => {
+			const setupSocket = () => {
+				socket.onmessage = msg => {
+					if (msg.data.indexOf('42/block') !== -1) {
+                        const [block] = JSON.parse(msg.data.replace('42/block,', ''));
+                        // 区块号获取
+						if (block.type == 'block') {
+							console.log('block',block.result)
+						}
+					}
+				}
+			}
+			const trySocket = () => {
+                const host = `ws://112.74.165.87:13021${suffix}`;
+		        const s = new WebSocket(host);
+		        s.onerror = err => {
+                    resolve(false);
+		          console.log('err',err);
+		        }
+		        s.onopen = () => {
+		        	socket = s;
+		        	send();
+		        	setupSocket();
+		        	resolve(true);
+		        }
+		        s.onclose = () => {
+		        	
+		        }
+			};
+			await trySocket();
+		})
+	}
+}
+
+```
