@@ -423,6 +423,13 @@ evt是一个合成事件
 | Geolocation                          |   地理位置API 需要翻墙，国内无法使用           |
 | ImageEditor                          |   安卓 - 裁剪图片           |
 | ImagePickerIOS                          |   IOS - 裁剪图片           |
+| Keyboard                          |   可以监听原生键盘事件           |
+| LayoutAnimation                          |   布局动画 感觉没啥用           |
+| Linking                          |   提供通用的接口来与传入和传出的App进行交互            |
+| PanResponder                          |   封装好的手势函数           |
+| PixelRatio                          |   可以获取到设备的像素密度和字体缩放比           |
+| Share                          |   打开一个对话框来共享文本内容。           |
+| Vibration                          |   手机震动API           |
 | Button                          |   按钮           |
 
 ## native API组件
@@ -432,6 +439,9 @@ evt是一个合成事件
 | AlertIOS                          |   IOS专属弹窗           |
 | ActionSheetIOS                          |   IOS底部弹出框           |
 | DatePickerAndroid                          |   安卓 - 日历组件,颜值很高           |
+| TimePickerAndroid                          |   打开一个时间选择的对话框           |
+| ToastAndroid                          |   toast提示 - 非常有用           |
+| Button                          |   按钮           |
 | Button                          |   按钮           |
 
 

@@ -15,34 +15,64 @@
       this.setState()
       分别写入后，和minxis差不多浅合并
       只可在this.setState()里改变
+      this.setState((state, props) => {
+         timesVisited: state.timesVisited + props.count
+      });
+   ``` js
+      this.setState({count:this.state.count + 1});
+      console.log('1',this.state.count)
+      this.setState({count:this.state.count + 1});
+      console.log('2',this.state.count)
+      setTimeout(() => {
+      console.log('3',this.state.count)
+      this.setState({count:this.state.count + 1});
+      console.log('33',this.state.count)
+      }, 1000);
+      setTimeout(() => {
+      console.log('4',this.state.count)
+      this.setState({count:this.state.count + 1});
+      console.log('44',this.state.count)
+      }, 1000);
+      this.setState({count:this.state.count + 1});
+      console.log('5',this.state.count)
+      // 结果
+       1    0
+       2    0
+       5    0
+       3    1
+       33   2
+       4    2
+       44   3
+
+
+   ```
    ### 生命周期
-      挂载
-      当组件实例被创建并插入 DOM 中时，其生命周期调用顺序如下：
-         constructor()
-         static getDerivedStateFromProps()
-         render()
-         componentDidMount()
+   <img :src="$withBase('/reactCycle.png')" alt="">
+   <span style="color:green;">挂载</span>
 
-      更新   
-      当组件的 props 或 state 发生变化时会触发更新。组件更新的生命周期调用顺序如下：
-         static getDerivedStateFromProps()
-         shouldComponentUpdate()
-         render()
-         getSnapshotBeforeUpdate()
-         componentDidUpdate()
+   1. 当组件实例被创建并插入 DOM 中时，其生命周期调用顺序如下：
+   - constructor()
+   - static getDerivedStateFromProps()
+   - render()
+   - componentDidMount()
 
-      卸载
-      当组件从 DOM 中移除时会调用如下方法：
-         componentWillUnmount()
+   2. 更新   
+   - 当组件的 props 或 state 发生变化时会触发更新。组件更新的生命周期调用顺序如下：
+   - static getDerivedStateFromProps()
+   - shouldComponentUpdate()
+   - render()
+   - getSnapshotBeforeUpdate()
+   - componentDidUpdate()
 
-      错误处理
-         当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：
-         static getDerivedStateFromError()
-         componentDidCatch()
+   3. 卸载
+   - 当组件从 DOM 中移除时会调用如下方法：
+   - componentWillUnmount()
 
+   4. 错误处理
+   - 当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：
+   - static getDerivedStateFromError()
+   - componentDidCatch()
 
-   ### 渲染函数
-      render()
    ### 事件
    ``` js
       普通写法，需手动绑定this

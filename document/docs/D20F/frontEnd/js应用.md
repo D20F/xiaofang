@@ -81,6 +81,10 @@ console.log(number); // 10
 console.log(-10.9 | 0);//-10
 console.log(~~10.9);//10
 ```
+## 用新Api进行深拷贝
+``` js
+Object.assign({}, student)
+```
 
 ## 指幂运算符
 ``` js

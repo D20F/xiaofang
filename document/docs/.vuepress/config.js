@@ -65,6 +65,7 @@ module.exports = {
             children: [
               ['/D20F/webApp/react_native.md','react_native'],
               ['/D20F/webApp/react_navigation.md','react_navigation'],
+              ['/D20F/webApp/RN_component.md','RN_component'],
               ['/D20F/webApp/taro.md','taro'],
               ['/D20F/webApp/uniapp.md','uniapp'],
             ]
