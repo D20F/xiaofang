@@ -25,13 +25,45 @@ module.exports = {
         ],
         sidebar: [
           {
+            title: 'Vue',   // 必要的 Vue
+            // path: '/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+            collapsable: true, // 可选的, 默认值是 true,侧边栏的每个子组默认是可折叠的，你可以设置 collapsable: false 来让一个组永远都是展开状态。
+            sidebarDepth: 3,    // 可选的, 默认值是 1 一个侧边栏的子组配置同时支持 sidebarDepth 字段用于重写默认显示的侧边栏深度(1)。
+            children: [
+              ['/D20F/Vue/vue.md','vue'],
+              ['/D20F/Vue/vuerouter.md','vue router'],
+              ['/D20F/Vue/vuex.md','vuex'],
+            ]
+          },
+          {
+            title: 'React',   // 必要的 React
+            // path: '/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+            collapsable: true, // 可选的, 默认值是 true,侧边栏的每个子组默认是可折叠的，你可以设置 collapsable: false 来让一个组永远都是展开状态。
+            sidebarDepth: 3,    // 可选的, 默认值是 1 一个侧边栏的子组配置同时支持 sidebarDepth 字段用于重写默认显示的侧边栏深度(1)。
+            children: [
+              ['/D20F/React/react_redux.md','redux'],
+              ['/D20F/React/react_router.md','react dom router'],
+              ['/D20F/React/react.md','react'],
+            ]
+          },
+          {
+            title: '面试专栏',   // 必要的 Interview
+            // path: '/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+            collapsable: true, // 可选的, 默认值是 true,侧边栏的每个子组默认是可折叠的，你可以设置 collapsable: false 来让一个组永远都是展开状态。
+            sidebarDepth: 3,    // 可选的, 默认值是 1 一个侧边栏的子组配置同时支持 sidebarDepth 字段用于重写默认显示的侧边栏深度(1)。
+            children: [
+              ['/D20F/Interview/vue_Interview.md','vue'],
+              ['/D20F/Interview/react_Interview.md','react'],
+              ['/D20F/Interview/Native.md','原生'],
+              ['/D20F/Interview/simulation.md','遇见过的题'],
+            ]
+          },
+          {
             title: '前端',   // 必要的 frontEnd
             // path: '/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
             collapsable: true, // 可选的, 默认值是 true,侧边栏的每个子组默认是可折叠的，你可以设置 collapsable: false 来让一个组永远都是展开状态。
             sidebarDepth: 3,    // 可选的, 默认值是 1 一个侧边栏的子组配置同时支持 sidebarDepth 字段用于重写默认显示的侧边栏深度(1)。
             children: [
-              ['/D20F/frontEnd/indexedOB.md','indexedOB'],
-              ['/D20F/frontEnd/canvas.md','canvas'],
               ['/D20F/frontEnd/面试难题.md','面试难题'],
               ['/D20F/frontEnd/dom.md','dom'],
               ['/D20F/frontEnd/js操作.md','js操作'],
@@ -47,16 +79,10 @@ module.exports = {
             ]
           },
           {
-            title: '框架',   // 必要的 frame
+            title: 'Go',   // 必要的 go
             sidebarDepth: 3, 
             children: [
-              ['/D20F/frame/vue.md','vue'],
-              ['/D20F/frame/vuex.md','vuex'],
-              ['/D20F/frame/vuerouter.md','vuerouter'],
-              ['/D20F/frame/react.md','react'],
-              ['/D20F/frame/react_router.md','react_router'],
-              ['/D20F/frame/react_redux.md','react_redux'],
-              ['/D20F/frame/wxchat.md','wxchat'],
+              ['/D20F/go/go.md','go'],
             ]
           },
           {
@@ -82,11 +108,12 @@ module.exports = {
             ]
           },
           {
-            title: 'Cocos',   // 必要的 cocos
+            title: 'Package',   // 必要的 Package
             sidebarDepth: 3, 
             children: [
-              ['/D20F/cocos/节点操作.md','节点操作'],
-              ['/D20F/cocos/CocosCreate3D.md','CocosCreate3D'],
+              ['/D20F/Package/indexedOB.md','indexedOB数据库'],
+              ['/D20F/Package/axios.md','axios'],
+              ['/D20F/Package/webpack.md','webpack'],
             ]
           },
           {
@@ -98,11 +125,10 @@ module.exports = {
             ]
           },
           {
-            title: 'interview',   // 
+            title: '微信',   // 必要的 frame
             sidebarDepth: 3, 
             children: [
-              ['/D20F/interview/axios.md','axios'],
-              ['/D20F/interview/webpack.md','webpack'],
+              ['/D20F/wx/wxchat.md','微信'],
             ]
           },
         ]
