@@ -1,4 +1,10 @@
 # go
+## 配置git config
+[http]
+	proxy = socks5://127.0.0.1:1080
+## 谷歌提供的一个环境变量
+GOPROXY="https://goproxy.cn,direct"
+
 ## 并发
 主进程死亡，并发进程也死亡
 
@@ -41,6 +47,3 @@ func main() {
 ```
 
 
-k8s
-gin
-orm
