@@ -6,9 +6,11 @@
   ### 退出数据库 
    exit
  ## 数据库操作
+  ### 显示已有数据库
+    show databases;
   ### 创建数据库
     创建数据库 数据库名为D_data
-    create database D_data;
+    CREATE DATABASE d_data DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
   ### 删除数据库
     删除数据库 数据库名为D_data
     drop database D_data;
@@ -16,16 +18,21 @@
     选择数据库 数据库名为D_data
     use D_data;
  
+
+ 
  ## 表操作 
   ### 创建表
-    CREATE TABLE D_tb(
-        D_id INT NOT NULL AUTO_INCREMENT,
-        D_name VARCHAR(100) NOT NULL,
-        D_title VARCHAR(100) NOT NULL,
-        D_author VARCHAR(40) NOT NULL,
-        D_date DATE,
-        PRIMARY KEY ( D_id, D_name),
-    );
+  ```sql
+CREATE TABLE D_tb(
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  author VARCHAR(40) NOT NULL,
+  date DATE,
+  PRIMARY KEY ( id, name)
+);
+```
+
     创建表 表名为D_tb
 
     INT VARCHAR DATE 都是定义表内数据的类型
@@ -41,7 +48,7 @@
   
 ## 数据操作
   ### INSERT 插入数据
-    INSERT INTO D_tb (D_name, D_title, D_author, D_date) VALUES ( '名字嗷', '标题嗷', '内容嗷' , NOW());
+    INSERT INTO D_tb (name, title, author, date) VALUES ( '名字嗷', '标题嗷', '内容嗷' , NOW());
 
     在表名为D_tb的表里 按照key对应value的方式插入数据
 
@@ -191,7 +198,39 @@
 
 
 
+## 用户权限
+### 添加用户
+1. 允许本地访问的用户（127.0.0.1）</br>
+create user zhrt@localhost identified by '123456';  
+2. 允许外网IP访问的用户</br>
+create user 'zhrt'@'%' identified by '123456'; 
 
+
+## 用户授权
+GRANT privileges ON databasename.tablename TO 'username'@'host';
+|               |               |   
+| ------------- |:-------------:| 
+| privileges      |   用户的操作权限,如SELECT , INSERT , UPDATE  等(详细列表见该文最后面).如果要授予所 的权限则使用ALL说明: | 
+| databasename    |   数据库名                                                                                          | 
+| tablename       |   表名                                                                                          | 
+| username        |   账号名                                                                                          | 
+| host            |   准许那个网址访问 %表示所有                                                                        | 
+
+tablename-表名,如果要授予该用户对所有数据库和表的相应操作权限则可用* 表示, 如*.*
+
+例子:
+1. 给 查询 插入 的权限 test库的user表 账号为javacui 所有地址访问权限
+
+GRANT SELECT, INSERT ON test.user TO 'javacui'@'%'; 
+
+2. 给所有权限 所有库 表 账号为D 所有地址访问权限 
+
+GRANT ALL ON *.* TO 'D'@'%';
+
+
+
+### 刷新权限
+1. flush privileges;  
 
 ## 数据库管理工具
 ```
