@@ -28,6 +28,7 @@ router.beforeEach((to, from, next) => {
 // from: Route: 当前导航正要离开的路由
 
 // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
+// next(name: 'Login')还可以用来重定向
 })
 
 export default router

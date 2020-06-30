@@ -31,6 +31,16 @@ func init() {
 	}
 	fmt.Println("连接成功")
 }
+func getData() {
+	var err error
+	Db, err = sql.Open("mysql", "D:123456@tcp(106.55.6.193:3306)/d_data")
+
+	if err != nil {
+		fmt.Println("open mysql failed,", err)
+		return
+	}
+	fmt.Println("连接成功")
+}
 func main() {
 	var users []User
 
