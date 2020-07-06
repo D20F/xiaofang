@@ -25,7 +25,12 @@ go mod init 初始化主包名
 ## go tag
 go Json tag语法 来显示
 
+## Abs 返回当前文件夹绝对路径 
+func Abs(path string) (string, error)
+filepath.Abs("/helleeo")
 
+## 静态资源 
+http.Handle("/", http.FileServer(http.Dir("C:/Users/Administrator/Desktop/test/react/build")))
 
 
 

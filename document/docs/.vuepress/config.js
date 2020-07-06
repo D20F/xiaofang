@@ -84,6 +84,7 @@ module.exports = {
             sidebarDepth: 3, 
             children: [
               ['/D20F/go/Go.md','Go'],
+              ['/D20F/go/Go常用封装.md','Go常用封装'],
               ['/D20F/go/Go交叉编译.md','Go交叉编译'],
               ['/D20F/go/GoSql.md','GoSql'],
             ]
