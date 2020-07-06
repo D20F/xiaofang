@@ -23,39 +23,5 @@
 
 
 
-庄家
-{
-    cardtype:{   最大牌型
-        type        牌型
-        multiple    倍数
-        Weights     权重
-    },
-    单牌数组:[
-        {
-            pukePoints  扑克点数
-            Suit        花色
-            Points      换算实际点数
-        }
-    ]
-}
-
-
-
-
-闲家 
-[
-    {
-        cardtype:{   最大牌型
-            type        牌型
-            multiple    倍数
-            Weights     权重
-        },
-        singleCardArr:[  单牌数组
-            {
-                pukePoints  扑克点数
-                Suit        花色
-                Points      换算实际点数
-            }
-        ]
-    }
-]
+tls
+https

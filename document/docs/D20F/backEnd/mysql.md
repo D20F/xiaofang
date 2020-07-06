@@ -23,13 +23,13 @@
  ## 表操作 
   ### 创建表
   ```sql
-CREATE TABLE D_tb(
-  id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(100) NOT NULL,
-  title VARCHAR(100) NOT NULL,
-  author VARCHAR(40) NOT NULL,
-  date DATE,
-  PRIMARY KEY ( id, name)
+CREATE TABLE D_tb (
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR (100) NOT NULL UNIQUE,
+	title VARCHAR (100) NOT NULL,
+	author VARCHAR (40) NOT NULL,
+	date DATETIME,
+	PRIMARY KEY (id, NAME)
 );
 ```
 
@@ -38,6 +38,8 @@ CREATE TABLE D_tb(
     INT VARCHAR DATE 都是定义表内数据的类型
 
     字段使用NOT NULL属性，是因为我们不希望这个字段的值为NULL。
+
+    字段使用 UNIQUE 属性，保持唯一性。
 
     字段的AUTO_INCREMENT属性告诉MySQL自动增加id字段下一个可用编号。
 
