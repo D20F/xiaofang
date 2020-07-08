@@ -21,14 +21,16 @@
 
  
  ## 表操作 
+  ### 查看所有表
+  show tables;
+
   ### 创建表
   ```sql
-CREATE TABLE D_tb (
+CREATE TABLE user (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR (100) NOT NULL UNIQUE,
-	title VARCHAR (100) NOT NULL,
-	author VARCHAR (40) NOT NULL,
-	date DATETIME,
+	nickname VARCHAR (100) NOT NULL,
+	createdate DATETIME,
 	PRIMARY KEY (id, NAME)
 );
 ```
