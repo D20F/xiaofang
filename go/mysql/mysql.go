@@ -7,22 +7,39 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-var Db *sql.DB
-
+/** 数据定义
+ *  @Title Db 								定义数据指针
+ *  @Title Parameter 						定义key - value 查询的结构体
+ *  @Title Pra 								数组形式的 Parameter结构体 方便放在一起查询
+**/
 type User struct {
 	Name   string `json:"name"`
 	Title  string `json:"title"`
 	Author string `json:"author"`
 	Date   string `json:"date"`
 }
-type parameter struct {
-	Sql  string
-	Data []string
+
+// Db   定义数据指针
+var Db *sql.DB
+
+// Parameter   定义key - value 查询的结构体
+type Parameter struct {
+	Key   string
+	Value string
 }
 
-func init() {
-	fmt.Println("连接成功")
-}
+// Pra 数组形式的 Parameter结构体 方便放在一起查询
+type Pra []Parameter
+
+/** 函数
+ *  @Title Connection 连接数据库
+ *  @Title InsertStatement 插入数据 --- SQL语句插入模式
+ *  @Title InsertsKeyValue 插入数据 --- Key-Value 模式插入
+ *  @Title Delete 删除数据 --- 填写WHERE子句选择删除
+ *  @Title Update 更新数据 --- 填写SET WHERE子句更新 
+**/
+
+func init() {}
 
 func Connection(name, password, address, database string) string {
 	// Db, err = sql.Open("mysql", "D:123456@tcp(106.55.6.193:3306)/d_data")
@@ -32,14 +49,16 @@ func Connection(name, password, address, database string) string {
 	Db, err = sql.Open("mysql", data)
 	if err != nil {
 		fmt.Println("open mysql failed,", err)
+		return "连接失败"
 	}
 	fmt.Println("连接成功")
-	return "成功"
+	return "连接成功"
 }
 
-func insert() string {
+func InsertStatement(sql string) string {
+	// INSERT INTO USER (NAME, nickname, createdate) VALUES ( '名字嗷', '标题嗷' , now())
 	var err error
-	result, err := Db.Exec("INSERT INTO D_tb (name, title, author, date) VALUES ( '名字嗷', '标题嗷', '内容嗷' , now())")
+	result, err := Db.Exec(sql)
 	if err != nil {
 		fmt.Printf("get failed, err: %v\n", err)
 	} else {
@@ -48,52 +67,74 @@ func insert() string {
 	return "成功"
 }
 
-func Inserts(sql string, args ...interface{}) string {
-	var err error
-	// stmt, err := Db.Prepare("INSERT INTO userinfo SET username=?,department=?,created=?")
-	stmt, err := Db.Prepare(i.Sql)
-	if err != nil {
-		fmt.Printf("get failed, err: %v\n", err)
+func InsertsKeyValue(n string, i Pra) string {
+	var list string
+	var key string
+	var data string
+	for index, v := range i {
+		if len(i)-1 == index && v.Key == "createdate" {
+			key += v.Key
+			data += v.Value
+		} else if v.Key == "createdate" {
+			key += v.Key + ","
+			data += v.Value + ","
+		} else {
+			key += v.Key + ","
+			data += "'" + v.Value + "',"
+		}
 	}
-	// res, err := stmt.Exec("astaxie", "研发部门", "2012-12-09")
-	res, err := stmt.Exec(sql, args...)
-	if err != nil {
-		fmt.Printf("get failed, err: %v\n", err)
-	}
-	fmt.Printf("成功 %v\n", res)
-	return "成功"
-}
-
-func delete() string {
+	list = fmt.Sprintf("INSERT INTO %v (%v) VALUES ( %v);", n, key, data)
 	var err error
-	result, err := Db.Exec("DELETE FROM D_tb WHERE name='名字嗷'")
+	result, err := Db.Exec(list)
 	if err != nil {
 		fmt.Printf("get failed, err: %v\n", err)
+		return "失败"
 	} else {
 		fmt.Printf("成功: %v", result)
 	}
 	return "成功"
 }
-func update() string {
+
+func Delete(n, sql string) string {
 	var err error
-	result, err := Db.Exec("UPDATE D_tb SET title='作者' WHERE name='test'")
+	var list string
+	list = fmt.Sprintf("DELETE FROM %v WHERE %v;", n, sql)
+	result, err := Db.Exec(list)
 	if err != nil {
 		fmt.Printf("get failed, err: %v\n", err)
+		return "删除失败"
 	} else {
 		fmt.Printf("成功: %v", result)
 	}
 	return "成功"
 }
-func getrow() string {
-	var users User
-	rows := Db.QueryRow("select name, title, author, date from D_tb")
 
-	err := rows.Scan(&users.Name, &users.Title, &users.Author, &users.Date)
-
+func Update(n, i, l string) string {
+	// "UPDATE USER SET NAME='北京' WHERE nickname='昵称'"
+	var err error
+	var list string
+	list = fmt.Sprintf("UPDATE %v SET %v WHERE %v;", n, i, l)
+	result, err := Db.Exec(list)
 	if err != nil {
 		fmt.Printf("get failed, err: %v\n", err)
+		return "更新失败"
+	} else {
+		fmt.Printf("更新成功: %v", result)
 	}
-	fmt.Printf("users:%+v\n", users)
+	return "更新成功"
+}
+
+func Getrow(n, i, l string) string {
+	// select NAME from USER where NAME='北京'
+	var list string
+	list = fmt.Sprintf("select %v from %v where %v;", i, n, l)
+	rows := Db.QueryRow(list)
+	// err := rows.Scan(&users.Name, &users.Title, &users.Author, &users.Date)
+
+	// if err != nil {
+	// 	fmt.Printf("get failed, err: %v\n", err)
+	// }
+	fmt.Printf("v2 type:%T\n", rows)
 	return "成功"
 
 }
@@ -115,11 +156,5 @@ func getrows() string {
 	fmt.Printf("users:%#v\n", users)
 	return "成功"
 }
-func checkErr(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
-func main() {
 
-}
+func main() {}
