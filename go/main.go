@@ -9,18 +9,24 @@ import (
 	// "os"
 	// "path/filepath"
 	mysql "D_page/mysql"
+	// test "D_page/test"
+	
 )
+
+type User struct {
+	NAME   string `json:"NAME"`
+	nickname  string `json:"nickname"`
+	createdate string `json:"createdate"`
+}
 
 func main() {
 	mysql.Connection("D", "123456", "106.55.6.193:3306", "D")
-	// var ccc mysql.Pra
-	// ccc = mysql.Pra{
-	// 	{"NAME", "北2京"},
-	// 	{"nickname", "标题嗷"},
-	// 	{"createdate", "NOW()"},
-	// }
-	// fmt.Println(ccc)
-	// mysql.InsertsKeyValue("USER",ccc)
-	mysql.Getrow("USER","NAME,nickname,createdate","NAME='北京'")
-	fmt.Println("asda")
+	ar := []string{"USER","NAME='北京'"}
+	us := []string{"NAME","nickname","createdate"}
+	es := []string{"NAME","nickname","createdate"}
+	au :=mysql.Getrow(ar,us,es)
+	fmt.Println(au)
+
 }
+
+
