@@ -168,3 +168,18 @@ func Getrow(args, arr, dest []string) map[string]string{
 // 	return "成功"
 // }
 
+// type User struct {
+// 	NAME   string `json:"NAME"`
+// 	nickname  string `json:"nickname"`
+// 	createdate string `json:"createdate"`
+// }
+
+// func main() {
+// 	mysql.Connection("D", "123456", "106.55.6.193:3306", "D")
+// 	ar := []string{"USER","NAME='北京'"}
+// 	us := []string{"NAME","nickname","createdate"}
+// 	es := []string{"NAME","nickname","createdate"}
+// 	au :=mysql.Getrow(ar,us,es)
+// 	fmt.Println(au)
+
+// }

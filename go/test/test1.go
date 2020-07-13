@@ -12,12 +12,12 @@ type User struct {
 	createdate string `json:"createdate"`
 }
 
-func main(){
+func test(){
     ss := User{
 		NAME:"asfsa",
 		nickname:"北京",
 	}
-	test.RangeStruct(ss, func(k, v string) {
+    RangeStruct(ss, func(k, v string) {
         fmt.Printf("range:%s,%s\n", k, v)
     })
 }
