@@ -21,7 +21,7 @@ defer被压进栈,会后进先出
 go mod init 初始化主包名
 同级目录下同包,不需要导入
 不同级目录,不同目录,主main入口下,在主包名/包导入
-mysql "D_page/mysql" 可自定义包名
+mysql "d_page/mysql" 可自定义包名
 
 ## go tag
 go Json tag语法 来显示

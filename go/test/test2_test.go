@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"testing"
 )
 
 
@@ -30,7 +31,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 
 
 
-func testtwo() {
+func TestMain(t *testing.T) {
 	http.HandleFunc("/login", login)      //设置访问的路由
 
 	// 绝对路径和相对路径 映射出来的静态资源的路径是以dist包里面的文件名为准的

@@ -3,23 +3,14 @@ package test
 // 遍历结构体
 import (
 	"fmt"
-	"reflect"
+    "reflect"
+    "testing"
 )
 
 type User struct {
 	NAME   string `json:"NAME"`
 	nickname  string `json:"nickname"`
 	createdate string `json:"createdate"`
-}
-
-func test(){
-    ss := User{
-		NAME:"asfsa",
-		nickname:"北京",
-	}
-    RangeStruct(ss, func(k, v string) {
-        fmt.Printf("range:%s,%s\n", k, v)
-    })
 }
 
 func RangeStruct(in interface{}, h func(k, v string)) {
@@ -38,4 +29,14 @@ func RangeStruct(in interface{}, h func(k, v string)) {
             h(t.Name, fmt.Sprint(f))
         }
 	}
+}
+
+func TestRange(t *testing.T){
+    ss := User{
+		NAME:"asfsa",
+		nickname:"北京",
+	}
+    RangeStruct(ss, func(k, v string) {
+        fmt.Printf("range:%s,%s\n", k, v)
+    })
 }

@@ -3,6 +3,8 @@ package mysql
 import (
 	"database/sql"
 	"fmt"
+	"strings"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -46,6 +48,7 @@ func Connection(name, password, address, database string) string {
 	var data string
 	data = fmt.Sprintf("%v:%v@tcp(%v)/%v", name, password, address, database)
 	Db, err = sql.Open("mysql", data)
+
 	if err != nil {
 		fmt.Println("open mysql failed,", err)
 		return "连接失败"
@@ -123,31 +126,14 @@ func Update(n, i, l string) string {
 	return "更新成功"
 }
 
-
-func Getrow(args, arr, dest []string) map[string]string{
-	// select NAME from USER where NAME='北京'
-	var list string
-	var arrstring string
-	for index, v := range arr {
-		if len(arr)-1 == index {
-			arrstring += v
-		}else {
-			arrstring += v + ","
-		}
-	}
-	list = fmt.Sprintf("select %v from %v where %v;", arrstring, args[0], args[1])
-	rows := Db.QueryRow(list)
-	err := rows.Scan(&dest[0],&dest[1],&dest[2])
-	if err != nil {
-		fmt.Printf("get failed, err: %v\n", err)
-	}
-	scoreMap := make(map[string]string)
-	for i, v := range arr {
-		scoreMap[v] = dest[i]
-    }
-	// fmt.Println(scoreMap)
-	return scoreMap
+func GetRow(columns []string, where string, table string, row ...interface{}) error {
+	sqlStr := fmt.Sprintf("SELECT %v FROM %v where %v", strings.Join(columns, ","), table, where)
+	fmt.Printf("sql: %s\n", sqlStr)
+	rows := Db.QueryRow(sqlStr)
+	return rows.Scan(row...)
 }
+
+
 
 
 // func getrows() string {
@@ -172,14 +158,4 @@ func Getrow(args, arr, dest []string) map[string]string{
 // 	NAME   string `json:"NAME"`
 // 	nickname  string `json:"nickname"`
 // 	createdate string `json:"createdate"`
-// }
-
-// func main() {
-// 	mysql.Connection("D", "123456", "106.55.6.193:3306", "D")
-// 	ar := []string{"USER","NAME='北京'"}
-// 	us := []string{"NAME","nickname","createdate"}
-// 	es := []string{"NAME","nickname","createdate"}
-// 	au :=mysql.Getrow(ar,us,es)
-// 	fmt.Println(au)
-
 // }

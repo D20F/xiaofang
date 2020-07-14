@@ -3,6 +3,7 @@ package test
 import (
 	"encoding/json"
 	"fmt"
+	"testing"
 )
 
 
@@ -15,7 +16,7 @@ type Serverslice struct {
 	Servers []Server
 }
 
-func testthree() {
+func TestMain(t *testing.T){
 	var s Serverslice
 	
 	// 解析JSON文件
