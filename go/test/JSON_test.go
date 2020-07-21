@@ -16,7 +16,7 @@ type Serverslice struct {
 	Servers []Server
 }
 
-func TestMain(t *testing.T){
+func TestJSON(t *testing.T){
 	var s Serverslice
 	
 	// 解析JSON文件

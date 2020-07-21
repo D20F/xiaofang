@@ -7,8 +7,12 @@
  1. mysql 增删改查mysql
 - test 
  1. mysql_test              mysql语句
- 1. struct_test             遍历结构体
- 2. server_test             网页接口以及静态资源服务器
- 3. JSON_test               解析JSON和转换为JSON文件
- 4. regexp_test             正则
- 5. websocket_test          websocket
+ 2. struct_test             遍历结构体
+ 3. server_test             网页接口以及静态资源服务器
+ 4. JSON_test               解析JSON和转换为JSON文件
+ 5. regexp_test             正则
+ 6. websocket_test          websocket 
+ 7. mkdir_test              mkdir 创建文件夹
+ 8. timer_test              timer 定时器
+ 8. reptile_test            爬虫
+ 9. gorm_test               gorm 操作数据库
