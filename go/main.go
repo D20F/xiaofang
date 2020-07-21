@@ -44,12 +44,12 @@ type User struct {
 	ID         int       `gorm:"primary_key;AUTO_INCREMENT;column:id"`
 	Name       string    `json:"name" gorm:"column:name"`
 	Nickname   string    `json:"nickname" gorm:"column:nickname"`
-	CreateDate time.Time `json:"create_date"  gorm:"column:datetime"`
+	CreateDate time.Time `json:"create_date"  gorm:"column:createdate"`
 }
 
 func main() {
-	// 指定字符集
-	db, err := gorm.Open("mysql", "D:123456@tcp(106.55.6.193:3306)/D?charset=utf8&parseTime=True&loc=Local")
+	// 指定字符集 parseTime设置时间  loc设置时区
+	db, err := gorm.Open("mysql", "D:123456@tcp(106.55.6.193:3306)/D?charset=utf8&parseTime=True")
 	defer db.Close()
 	if err != nil {
 		panic(fmt.Sprint("failed to connect database: %v", err))
