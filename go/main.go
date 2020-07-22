@@ -42,7 +42,14 @@ func upload(c *gin.Context) {
 	file, _ := c.FormFile("file")
 	fmt.Println(file.Filename)
 	// 上传文件到指定的路径
-	c.SaveUploadedFile(file, file.Filename)
+	err := c.SaveUploadedFile(file, file.Filename)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		c.JSON(200, gin.H{
+			"message": "成功",
+		})
+	}
 }
 
 func log(c *gin.Context) {
@@ -67,20 +74,21 @@ func main() {
 	router.GET("/ping", ping)
 	router.GET("/welcome", welcome)
 	router.GET("/form", form)
-	router.GET("/upload", upload)
+	router.POST("/upload", upload)
 
 	router.GET("/Redirect1", Redirect1)
 	router.GET("/Redirect2", Redirect2)
 
 	// 托管静态目录
-	router.StaticFS("/more_static", http.Dir(".././express/dist"))
+	router.StaticFS("/more_static", http.Dir("./"))
 	// 托管单个文件
-	router.StaticFile("/logo.png", ".././express/dist/logo.png")
+	// router.StaticFile("/logo.png", ".././express/dist/logo.png")
 
 	router.Run(":8080") // 监听并在 0.0.0.0:8080 上启动服务
 }
 
 // <form action="http://127.0.0.1:8080/upload" method="post" enctype="multipart/form-data">
+// <form action="http://http://106.55.6.193:8080/upload" method="post" enctype="multipart/form-data">
 //  <div>
 //    <label for="file">Choose file to upload</label>
 //    <input type="file" id="file" name="file" multiple>

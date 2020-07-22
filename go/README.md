@@ -16,3 +16,19 @@
  8. timer_test              timer 定时器
  8. reptile_test            爬虫
  9. gorm_test               gorm 操作数据库
+ 9. xorm_test               xorm 操作数据库
+
+
+
+
+
+
+
+
+
+
+
+## liunx平台
+```bash
+    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main-linux-amd64 main.go
+```
