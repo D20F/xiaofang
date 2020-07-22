@@ -1,74 +1,103 @@
 package main
 
 import (
-	"database/sql/driver"
 	"fmt"
-	"time"
 
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"github.com/gin-gonic/gin"
+
+	"net/http"
 )
 
-const (
-	TIME_FORMAT string = "2006-01-02 15:04:05"
-)
+var router *gin.Engine
 
-type MyTime struct {
-	time.Time
+func init() {
+	router = gin.Default()
 }
 
-func (t MyTime) MarshalJSON() ([]byte, error) {
-	formatted := fmt.Sprintf("\"%s\"", t.Format(TIME_FORMAT))
-	return []byte(formatted), nil
+func ping(c *gin.Context) {
+	// 数据接口
+	c.JSON(200, gin.H{
+		"message": "pong",
+	})
 }
 
-func (t MyTime) Value() (driver.Value, error) {
-	var zeroTime time.Time
-	if t.Time.UnixNano() == zeroTime.UnixNano() {
-		return nil, nil
-	}
-	return t.Time, nil
+func welcome(c *gin.Context) {
+	// get请求
+	name := c.Query("name")
+	lastname := c.Query("lastname")
+	fmt.Println("Hello %s", name)
+	fmt.Println("Hello %s", lastname)
 }
 
-func (t *MyTime) Scan(v interface{}) error {
-	value, ok := v.(time.Time)
-	if ok {
-		*t = MyTime{Time: value}
-		return nil
-	}
-	return fmt.Errorf("can not convert %v to timestamp", v)
+func form(c *gin.Context) {
+	// 表单
+	typ := c.PostForm("typ")
+	msg := c.PostForm("msg")
+	title := c.PostForm("title")
+	fmt.Println("typ is %s, msg is %s, title is %s", typ, msg, title)
 }
 
-// 结构体映射表
-type User struct {
-	ID         int       `gorm:"primary_key;AUTO_INCREMENT;column:id"`
-	Name       string    `json:"name" gorm:"column:name"`
-	Nickname   string    `json:"nickname" gorm:"column:nickname"`
-	CreateDate time.Time `json:"create_date"  gorm:"column:createdate"`
+func upload(c *gin.Context) {
+	// 单文件上传
+	file, _ := c.FormFile("file")
+	fmt.Println(file.Filename)
+	// 上传文件到指定的路径
+	c.SaveUploadedFile(file, file.Filename)
+}
+
+func log(c *gin.Context) {
+	// 全局中间件
+	fmt.Println("1111111111111111111111111")
+}
+
+func Redirect1(c *gin.Context) {
+	// 内部路由重定向
+	c.Request.URL.Path = "/Redirect2"
+	router.HandleContext(c)
+}
+func Redirect2(c *gin.Context) {
+	// 外链重定向
+	c.Redirect(http.StatusMovedPermanently, "http://www.google.com/")
 }
 
 func main() {
-	// 指定字符集 parseTime设置时间  loc设置时区
-	db, err := gorm.Open("mysql", "D:123456@tcp(106.55.6.193:3306)/D?charset=utf8&parseTime=True")
-	defer db.Close()
-	if err != nil {
-		panic(fmt.Sprint("failed to connect database: %v", err))
-	}
-	// 关闭默认表名复数形式
-	db.SingularTable(true)
+	// use注册中间件
+	router.Use(log)
 
-	var user User
-	fmt.Println(db.HasTable(user))
+	router.GET("/ping", ping)
+	router.GET("/welcome", welcome)
+	router.GET("/form", form)
+	router.GET("/upload", upload)
 
-	var Name = "北京"
-	//条件查询
-	err = db.Where("Name = ?", Name).Find(&user).Error
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(user)
-	fmt.Println(user.CreateDate.Format(TIME_FORMAT))
-	// time, _ := MarshalJSON()
-	// fmt.Println(time)
+	router.GET("/Redirect1", Redirect1)
+	router.GET("/Redirect2", Redirect2)
 
+	// 托管静态目录
+	router.StaticFS("/more_static", http.Dir(".././express/dist"))
+	// 托管单个文件
+	router.StaticFile("/logo.png", ".././express/dist/logo.png")
+
+	router.Run(":8080") // 监听并在 0.0.0.0:8080 上启动服务
 }
+
+// <form action="http://127.0.0.1:8080/upload" method="post" enctype="multipart/form-data">
+//  <div>
+//    <label for="file">Choose file to upload</label>
+//    <input type="file" id="file" name="file" multiple>
+//  </div>
+//  <div>
+//    <button>Submit</button>
+//  </div>
+// </form>
+
+// var xmlhttp;
+// xmlhttp=new XMLHttpRequest()
+// xmlhttp.onreadystatechange=function()
+// {
+// 	if (xmlhttp.readyState==4 && xmlhttp.status==200)
+// 	{
+// 	  console.log(xmlhttp.responseText)
+// 	}
+// }
+// xmlhttp.open("POST","/form",true);
+// xmlhttp.send();
