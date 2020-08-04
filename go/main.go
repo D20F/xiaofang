@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-
 	"github.com/gin-gonic/gin"
 
 	"net/http"
@@ -85,6 +84,7 @@ func main() {
 	// router.StaticFile("/logo.png", ".././express/dist/logo.png")
 
 	router.Run(":8080") // 监听并在 0.0.0.0:8080 上启动服务
+
 }
 
 // <form action="http://127.0.0.1:8080/upload" method="post" enctype="multipart/form-data">

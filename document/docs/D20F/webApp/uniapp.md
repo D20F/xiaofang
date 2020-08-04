@@ -25,7 +25,9 @@ uni.getProvider({
     }
 });
  ```
-
+# 框架
+安装vuex 无异常
+sass 安装 node-sass 和 sass-loader即可
 
 
 
