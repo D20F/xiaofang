@@ -54,6 +54,10 @@ source /etc/bashrc</br>
     yum install nginx -y 安装nginx 服务器
     修改nginx配置文件
     vi /etc/nginx/nginx.conf 
+
+    nginx 安装步骤
+    https://www.cnblogs.com/jayjiang/p/12632942.html
+
  ## redis
     yum install redis -y  按照redis
 
