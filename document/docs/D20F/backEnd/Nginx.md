@@ -3,6 +3,7 @@
     yum install nginx -y 安装nginx 服务器
     修改nginx配置文件
     vi /etc/nginx/nginx.conf 
+    
  ## 常用命令
    nginx            # 启动服务
    nginx -s reload  # 向主进程发送信号，重新加载配置文件，热重启
@@ -34,8 +35,6 @@
    pkill -9 nginx
 
 
-
-    root     /root/test/xiaofang/express/dist;
-
-
+ ## 访问不了root文件夹
+ 记得把nginx加到root组里面
 

@@ -106,8 +106,6 @@ SET CGO_ENABLED=0SET GOOS=darwinSET GOARCH=amd64 go build main.go
 SET CGO_ENABLED=0SET GOOS=linuxSET GOARCH=amd64 go build main.go
 ```
 
-
-
 ```bash
 https://github.com/golang/go/blob/master/src/go/build/syslist.go#L8:31
 package build
@@ -118,7 +116,13 @@ const goarchList = "386 amd64 amd64p32 arm armbe arm64 arm64be ppc64 ppc64le mip
 
 
 ## 参考链接：
-
 [Go Optional environment variables](https://golang.org/doc/install/source#environment)
-
 [Cross Compile with Go 1.5](https://dave.cheney.net/2015/08/22/cross-compilation-with-go-1-5)
+
+
+
+
+## 自己的liunx平台
+```bash
+    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main-linux-amd64 main.go
+```
