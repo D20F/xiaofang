@@ -1,4 +1,5 @@
 # 
+在go目录下
  go test -v test/mysql_test.go
  Test为前缀名
  输入 t *testing.T 自动导入测试包
