@@ -30,9 +30,15 @@ go Json tag语法 来显示
 func Abs(path string) (string, error)
 filepath.Abs("/helleeo")
 
-## 静态资源 
+## 静态资源托管 go
 http.Handle("/", http.FileServer(http.Dir("C:/Users/Administrator/Desktop/test/react/build")))
 http.Handle("/", http.FileServer(http.Dir("./dist")))
+
+## 静态资源托管 gin
+ 托管静态目录
+ router.StaticFS("/more_static", http.Dir("./"))
+ 托管单个文件
+ router.StaticFile("/logo.png", ".././express/dist/logo.png")
 
 ## 可变参数
 func sum(nums ...int) {
@@ -41,3 +47,5 @@ func sum(nums ...int) {
 func main() {
     sum([1,2,3])
 }
+
+

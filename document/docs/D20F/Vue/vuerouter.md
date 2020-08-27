@@ -67,7 +67,8 @@ API 来操作实现 URL 的变化
 
 我们可以使用 popstate  事件来监听 url 的变化，从而对页面进行跳转（渲染）；
 
-
+## 路由增加
+router.addRoutes([标准路由])
 
 
 

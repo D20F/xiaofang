@@ -186,6 +186,9 @@ CDN 的使用</br>
 
 
 
+## vue-config
+在vue-config设置
+lintOnSave: false,  可以取消eslint检测
 
 
 

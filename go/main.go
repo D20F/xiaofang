@@ -86,26 +86,3 @@ func main() {
 	router.Run(":8080") // 监听并在 0.0.0.0:8080 上启动服务
 
 }
-
-// <form action="http://127.0.0.1:8080/upload" method="post" enctype="multipart/form-data">
-// <form action="http://http://106.55.6.193:8080/upload" method="post" enctype="multipart/form-data">
-//  <div>
-//    <label for="file">Choose file to upload</label>
-//    <input type="file" id="file" name="file" multiple>
-//  </div>
-//  <div>
-//    <button>Submit</button>
-//  </div>
-// </form>
-
-// var xmlhttp;
-// xmlhttp=new XMLHttpRequest()
-// xmlhttp.onreadystatechange=function()
-// {
-// 	if (xmlhttp.readyState==4 && xmlhttp.status==200)
-// 	{
-// 	  console.log(xmlhttp.responseText)
-// 	}
-// }
-// xmlhttp.open("POST","/form",true);
-// xmlhttp.send();

@@ -59,7 +59,19 @@ axios.interceptors.request.eject()</br>
 
  ```
 
+## axios get请求
+``` js
+       axios({
+            method: "get",
+            url: "http://localhost:8080/get",
+            params: {
+                token: cookie,
+            },
+        }).then(function (res) {
+            console.log(res);
+        });
 
+```
 
 
 
