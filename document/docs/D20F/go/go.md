@@ -1,7 +1,4 @@
 # go
-## 配置git config
-[http]
-	proxy = socks5://127.0.0.1:1080
 
 ## 谷歌提供的一个环境变量
 GOPROXY="https://goproxy.cn,direct"
@@ -48,4 +45,12 @@ func main() {
     sum([1,2,3])
 }
 
+## import 的特殊用法
+```go
+import (
+	_ "fmt"      // 只调用init
+	. "net/http" // 默认导入全部
+	"github.com/gin-gonic/gin"
+)
+```
 
