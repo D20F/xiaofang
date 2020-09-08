@@ -30,7 +30,18 @@ uni.getProvider({
 sass 安装 node-sass 和 sass-loader即可
 
 
-
+s() {
+    // 竖屏
+    plus.screen.lockOrientation("portrait-primary");
+},
+h() {
+    // 横屏
+    plus.screen.lockOrientation("landscape-primary");
+},
+f() {
+    // 翻转屏幕
+    plus.screen.lockOrientation("landscape-secondary");
+},
     
 
 

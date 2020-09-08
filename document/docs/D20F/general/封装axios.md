@@ -44,7 +44,7 @@ import axios from 'axios';
 
     // 获取配置
     const getConfig = (reqData) => {
-        const url = '/config/get_config';
+        const url = '/config/get_config'; 
         const data = reqData;
         return getData(url, data);
     }
