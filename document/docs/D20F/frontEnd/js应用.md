@@ -301,3 +301,76 @@ export const regExpConfig = {
   float: /^\d+(\.?|(\.\d+)?)$/, // 匹配正整数或者小数 或者0.这个特殊值
 }
 ```
+# 文件切片上传
+``` js
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta name = "viewport" content="with=device-with,initial-scale=1.0"> -->
+    <title>wen jian shang update</title>
+</head>
+
+<body>
+    <input type="file" id="bthFile">
+    <input type="button" value="上传" onclick="upload(0)">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        let bthFile = document.querySelector("#bthFile");
+        let chunkSize = 1024 * 1024; //1MB
+        // 从0开始 
+        function upload(index) {
+
+            //获取到文件对象
+            let file = bthFile.files[0];
+            console.log(file);
+            // 切割 文件名和后缀名
+            let [fname, fext] = file.name.split(".");
+            // 定义文件最小切片 1MB
+            let start = index * chunkSize;
+
+            //如果文件分片大于文件本身大小，则调用合并接口,直接上传
+            if (start > file.size) {
+                merge(file.name)
+                return;
+            }
+
+            // 文件开始切片
+            let blob = file.slice(start, start + chunkSize);
+            // 文件切片名
+            let blobName = `${fname}.${index}.${fext}`;
+            // 创建切片文件 利用File 放入切片文件和切片文件名
+            let blobFile = new File([blob], blobName)
+
+            console.log(blob)
+            console.log(blobName)
+            console.log(blobFile)
+
+
+            let fromData = new FormData()
+            fromData.append("file", blobFile);
+            for (var value of fromData.values()) {
+                console.log(value);
+            }
+
+            // 递归上传文件
+            axios.post("updatefile",fromData).then(res=>{
+                console.info(res.data)
+                upload(++index);
+            })
+        }
+
+        function merge(fileName) {
+            console.info(fileName)
+            axios.post("merge", { name: fileName }).then(res => {
+                console.info(res.data);
+            })
+        }
+    </script>
+</body>
+
+</html>
+
+```
