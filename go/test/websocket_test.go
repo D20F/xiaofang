@@ -18,12 +18,16 @@ func Echo(ws *websocket.Conn) {
 		for {
 			tt := time.After(time.Second * 1)
 			fmt.Println("t=", <-tt)
+			// 发送 tt
 			if err = websocket.Message.Send(ws, "tt"); err != nil {
 				fmt.Println("Can't send")
 			}
 		}
+		// 接受
 		if err = websocket.Message.Receive(ws, &reply); err != nil {
 			fmt.Println("Can't receive")
+			fmt.Println(reply)
+			fmt.Println(&reply)
 			break
 		}
 
