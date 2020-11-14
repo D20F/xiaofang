@@ -2,42 +2,31 @@ let num = 9;
 let arr = [2, 7, 11, 15, 7, 2, 11, 15];
 
 
-// 未完成
-[3, 2, 1]
-function directInsertionSort(arr) {
 
-    var length = array.length;
-    var curr, index;
+// 归并排序
+let arr = [3, 2, 1, 1,2,2, 4, 2,532,421,124,1,2,421,4,412,4124,5,3];
 
-    for (var i = 1; i < length; i++) {
-        index = i - 1;
-        curr = arr[i]
-        while (index >= 0 && arr[index] > curr) {
-            arr[index + 1] = arr[index]
-            index--;
-        }
-    }
-
-
-
-    return array;
-}
-directInsertionSort(arr)
-
-
-let arr = [4, 3, 1, 2, 4];
+let arr = [3,1,3];
 function quickSort(array) {
+    // 数组必须长于1
     if (array.length < 1) {
         return array;
     }
+    // 拿到数组最后一位
     let pivot = array[array.length - 1];
+    // 小于等于数组最后一个的全部去左边 
     let left = array.filter((v, i) => v <= pivot && i != array.length - 1)
+    // 大于等于数组最后一个的全部去右边 
     let right = array.filter(v => v > pivot)
-    console.log(pivot)
+    console.log("left",left)
+    console.log("right",right)
+    console.log("pivot",pivot)
     return [...quickSort(left), pivot, ...quickSort(right)]
 }
-
 quickSort(arr)
 
-            
-let arr = [3, 2, 1, 1, 4, 5];
+
+
+// 数组去重
+let arr = [3, 2, 1, 1,2,2, 4, 2,532,421,124,1,2,421,4,412,4124,5,3];
+
