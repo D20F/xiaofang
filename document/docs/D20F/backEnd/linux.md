@@ -69,6 +69,9 @@ kill -s 9 pid
 查看系统内存情况
 free -h
 
+查看当前已使用端口
+netstat -nultp
+
 
 ## pm2
 安装

@@ -43,9 +43,9 @@ listen_addresses='*'
 进入 vi /var/lib/pgsql/data/pg_hba.conf
 host    all         all         0.0.0.0/0      ident
 修改 ident 为 trust
-host    all         all         0.0.0.0/0      trust
+host    all         all         0.0.0.0/0      md5
 
 进入验证一波密码
 su - postgres
-进入 d用户的 
+进入 本地的 d用户的 
 psql -h 127.0.0.1 -U d -d postgres -W
