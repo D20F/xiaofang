@@ -2,7 +2,7 @@
  ## 数据库基础操作
   ### 登陆数据库 
    需要输密码
-   mysql -u root -p
+   mysql -u root -p     我的root账户密码750411
   ### 退出数据库 
    exit
  ## 数据库操作
