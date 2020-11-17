@@ -66,6 +66,10 @@ ps -ef
 杀死进程 pid为对应的进程pid</br>
 kill -s 9 pid
 
+查看系统内存情况
+free -h
+
+
 ## pm2
 安装
 npm install pm2 -g
