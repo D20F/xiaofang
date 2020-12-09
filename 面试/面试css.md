@@ -1,8 +1,9 @@
 # 样式
 ## box-sizing
+border-box 告诉浏览器：你想要设置的边框和内边距的值是包含在width内的。也就是说，如果你将一个元素的width设为100px，那么这100px会包含它的border和padding，内容区的实际宽度是width减去(border + padding)的值。大多数情况下，这使得我们更容易地设定一个元素的宽高。
+
 content-box  是默认值。如果你设置一个元素的宽为100px，那么这个元素的内容区会有100px 宽，并且任何边框和内边距的宽度都会被增加到最后绘制出来的元素宽度中。
 
-border-box 告诉浏览器：你想要设置的边框和内边距的值是包含在width内的。也就是说，如果你将一个元素的width设为100px，那么这100px会包含它的border和padding，内容区的实际宽度是width减去(border + padding)的值。大多数情况下，这使得我们更容易地设定一个元素的宽高。
 
 ## 移动端1px
 伪元素解决 或者 设置viewport头解决
@@ -13,21 +14,17 @@ border-box 告诉浏览器：你想要设置的边框和内边距的值是包含
     height: 10rem;
   }
   .setOnePx::after{
-        content:" ";
-        position:absolute;
-        top: 0;
-        left: 0;
-        width: 200%;
-        height: 200%;
-        transform: scale(0.5);
-        transform-origin: 0 0;
-        box-sizing: border-box;
-        border: 1px solid #E5E5E5;
+    content: " ";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    border: 1px solid black;
   }
 ```
 
-## 居中为什么要用transform而不是top,marginleft
-因为transform是合成属性,不会引起重绘重排,而top,marginleft会引起
 
 ## href和src的区别
 href </br>
