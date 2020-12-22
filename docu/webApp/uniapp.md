@@ -113,6 +113,23 @@ f() {
             },
         });
 ```
+## 角标设置
+plus.runtime.setBadgeNumber(0);
+
+项目名全部未更换
+app id未更换
+证书别名:未知
+证书密码:未知
+
+## 打开手机其他app
+plus.runtime.launchApplication(  
+    {  
+        pname: 'com.tencent.mobileqq'    //包名
+    },  
+    function(e) {  
+        console.log('err'+'Open system default browser failed: ' + e.message);  
+    }  
+);
 
 
 

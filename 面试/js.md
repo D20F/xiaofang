@@ -195,7 +195,6 @@ Function.prototype.myCall = function(thisArg, ...args) {
 v-model会默认注册一个 input事件 他的原理应该是绑定数据在set时候触发input事件来修改数据
 
 
-slot 指定数据
 
 
 

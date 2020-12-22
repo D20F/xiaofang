@@ -20,7 +20,9 @@ git fetch
 创建一个本地分支和远程的分支关联起来
 git checkout -b 本地分支名 origin/远程分支名
 
-
+## git bash 生成sshkey
+ssh-keygen -o
+使用公钥进行git操作
 
 
 
