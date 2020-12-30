@@ -119,6 +119,7 @@ let name = new Promise((resolve, reject)=>{
              console.error(1);
         }, 2000);
     })
+    
 function funs(){
     console.log(212131)
 }

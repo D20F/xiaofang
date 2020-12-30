@@ -26,8 +26,8 @@
 
 
 
-<form action="http://localhost:8080/upload/" enctype="multipart/form-data" method="POST"> 
-    <input type="file" name="file" id="pic" accept="*" />
+<form action="./" method="GET"> 
+    <input type="text" name="text" id="pic" accept="*" />
     <button type="submit">提交</button>
 </form>
 

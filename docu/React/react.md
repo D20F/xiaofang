@@ -46,32 +46,6 @@
 
 
    ```
-   ### 生命周期
-   <img :src="$withBase('/reactCycle.png')" alt="">
-   <span style="color:green;">挂载</span>
-
-   1. 当组件实例被创建并插入 DOM 中时，其生命周期调用顺序如下：
-   - constructor()
-   - static getDerivedStateFromProps()
-   - render()
-   - componentDidMount()
-
-   2. 更新   
-   - 当组件的 props 或 state 发生变化时会触发更新。组件更新的生命周期调用顺序如下：
-   - static getDerivedStateFromProps()
-   - shouldComponentUpdate()
-   - render()
-   - getSnapshotBeforeUpdate()
-   - componentDidUpdate()
-
-   3. 卸载
-   - 当组件从 DOM 中移除时会调用如下方法：
-   - componentWillUnmount()
-
-   4. 错误处理
-   - 当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：
-   - static getDerivedStateFromError()
-   - componentDidCatch()
 
    ### 事件
    ``` js
@@ -244,6 +218,54 @@
 # CSS全局污染
 使用 CSS Modules 解决
 
+## 高阶组件
+即参数为组件，返回却是新组件
+
+## 库
+classnames 类似vue的类名绑定的库
+lodash      工具库
+moment      时间库
+
+### 生命周期
+1. 当组件实例被创建并插入 DOM 中时，其生命周期调用顺序如下：
+- constructor()
+- static getDerivedStateFromProps()
+- render()
+- componentDidMount()
+
+2. 更新   
+- 当组件的 props 或 state 发生变化时会触发更新。组件更新的生命周期调用顺序如下：
+- static getDerivedStateFromProps()
+- shouldComponentUpdate()
+- render()
+- getSnapshotBeforeUpdate()
+- componentDidUpdate()
+
+3. 卸载
+- 当组件从 DOM 中移除时会调用如下方法：
+- componentWillUnmount()
+
+4. 错误处理
+- 当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：
+- static getDerivedStateFromError()
+- componentDidCatch()
+
+
+## useReducer
+useReducer 接受复杂逻辑的挑战
+还可以惰性初始化
+  const [state, dispatch] = useReducer(reducer, initialCount, init);
+
+
+
+生命周期
+Context传值
+Fragments 取消组件父节点空白div
+高阶组件 高阶函数返回封装组件
+Portals 渲染组件到任意dom
+refs  创建React.createRef() refs控制基础dom
+Render Props 组件封装思想 
+hook useEffect的回调会优先执行 
 
 
 
