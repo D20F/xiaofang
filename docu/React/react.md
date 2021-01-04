@@ -268,7 +268,8 @@ Render Props 组件封装思想
 hook useEffect的回调会优先执行 
 
 
-
+# 弹出react 配置文件
+npm run eject
 
 
 
