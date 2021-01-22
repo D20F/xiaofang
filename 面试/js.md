@@ -92,6 +92,11 @@ Object.assign({}, student)
 3**3 === 27
 ```
 
+## 正则检测                 
+``` js
+    const regex = /^1([3|4|5|7|8|])\d{9}$/;
+    return regex.test(val);
+```
 ## 替换或者匹配正则                 
 ``` js
 '123'.replace('1','2')//223

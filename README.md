@@ -9,3 +9,15 @@ http://bbs.zikao5.com/forum.php
 http://www.boeebook.cn/product_detail/1988
 
 
+12306pass 抢票软件
+
+
+预渲染
+
+vue  vuex vuerouter 
+react redux react-router
+webpack
+css
+html
+js
+

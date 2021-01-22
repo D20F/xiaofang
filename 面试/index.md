@@ -176,3 +176,12 @@ for of 遍历主体
 defer 异步加载js
 async 也是开一个线程加载不过会立刻执行
 动态创建<script>标签
+
+## 长耗时的JS代码放到Web Workers中执行
+如果真的有特别耗时且不操作DOM元素的纯计算工作，可以考虑放到Web Workers中执行。
+
+## 动画函数
+window.requestAnimationFrame(step);
+window.cancelAnimationFrame()
+
+
