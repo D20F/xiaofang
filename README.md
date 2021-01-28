@@ -12,12 +12,26 @@ http://www.boeebook.cn/product_detail/1988
 12306pass 抢票软件
 
 
-预渲染
 
-vue  vuex vuerouter 
-react redux react-router
-webpack
-css
-html
-js
 
+
+
+
+
+
+
+
+
+
+
+抢票 核酸  回去安排
+
+御坂 下载
+
+原神 武器素材 突破素材
+
+脑图拓展 每个
+1w回来
+
+
+luckysheet

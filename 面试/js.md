@@ -220,3 +220,9 @@ window.onresize = function () {
 ```
 
 
+## 格式化金钱 三位逗号
+``` js
+const ThousandNum = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+const money = ThousandNum(20190214);
+// money => "20,190,214"
+```

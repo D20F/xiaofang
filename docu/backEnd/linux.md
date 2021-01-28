@@ -87,3 +87,8 @@ pm2 start index.js
 pm2 delete name
 结束所有线程
 pm2 delete all
+
+
+## xshell
+ssh连接服务器
+yum install -y lrzsz.x86_64 下载后可以直接传输文件到服务器
