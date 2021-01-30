@@ -184,4 +184,37 @@ async 也是开一个线程加载不过会立刻执行
 window.requestAnimationFrame(step);
 window.cancelAnimationFrame()
 
+## input弹出数字键盘
+使用<input type="tel">弹起数字键盘会带上#和*，适合输入电话。推荐使用<input pattern="\d*">弹起数字键盘
+
+## 唤醒原生应用
+通过location.href与原生应用建立通讯渠道，这种页面与客户端的通讯方式称为URL Scheme，其基本格式为scheme://[path][?query]
+
+## 简化回到顶部 跳转到dom元素位置
+使用 scrollIntoView 实现
+behavior：动画过渡效果，默认auto无，可选smooth平滑
+inline：水平方向对齐方式，默认nearest就近对齐，可选start顶部对齐、center中间对齐和end底部对齐
+block：垂直方向对齐方式，默认start顶部对齐，可选center中间对齐、end底部对齐和nearest就近对齐
+返回body的位置    当然也可以选择其他的dom元素
+document.body.scrollIntoView({ behavior: "smooth" });
+
+## 简化懒性加载
+使用IntersectionObserver 函数 观察是否进入视线区域
+懒性加载的第二种使用场景：下拉加载。在列表最底部部署一个占位元素且该元素无任何高度或实体外观，只需确认占位元素进入可视区域就请求接口加载数据。
+<ul>
+    <li></li>
+    <!-- 很多<li> -->
+</ul>
+<!-- 也可将#bottom以<li>的形式插入到<ul>内部的最后位置 -->
+<div id="bottom"></div>
+复制代码
+const bottom = document.getElementById("bottom");
+const IntersectionObserver = new IntersectionObserver(nodes => {
+    const tgt = nodes[0]; // 反正只有一个
+    if (item.isIntersecting) {
+        console.log("已到底部，请求接口");
+        // 执行接口请求代码
+    }
+})
+IntersectionObserver.observe(bottom);
 

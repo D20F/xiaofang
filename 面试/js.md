@@ -226,3 +226,18 @@ const ThousandNum = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 const money = ThousandNum(20190214);
 // money => "20,190,214"
 ```
+
+## 判断
+``` js
+if([]==false){console.log(1)}//真
+if({}==false){console.log(1)}//假
+if([]){console.log(1)}       //真
+if([1]==[1]){console.log(1)} //假
+```
+
+## 使用attr()抓取data-*
+用来适配 伪元素 :after   content
+
+## css效验表单
+使用:valid和:invalid校验表单
+要点：<input>使用伪类:valid和:invalid配合pattern校验表单输入的内容
