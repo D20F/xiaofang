@@ -37,4 +37,22 @@ src表示引用资源，替换当前元素，用在img，script，iframe上，sr
 
 
 
+## nth-child 选择器
+``` css
+选择第2个 到第4个
+div:nth-child(n+2):nth-child(-n+4) {
+    margin-right: calc((100% - 500px) / 4);
+}
+选择 倍数为5的
+div:nth-child(5n) {
+    margin-right: 0;
+}
 
+```
+
+## calc 动态计算 
+``` css
+div:first-child {
+    margin-right: calc((100% - 500px) / 4);
+}
+```
