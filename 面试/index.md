@@ -218,3 +218,5 @@ const IntersectionObserver = new IntersectionObserver(nodes => {
 })
 IntersectionObserver.observe(bottom);
 
+## 获取视图可视距离
+getBoundingClientRect
