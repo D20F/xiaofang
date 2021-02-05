@@ -241,3 +241,13 @@ if([1]==[1]){console.log(1)} //假
 ## css效验表单
 使用:valid和:invalid校验表单
 要点：<input>使用伪类:valid和:invalid配合pattern校验表单输入的内容
+
+
+## vue底层渲染原理 虚拟dom由 vue-template-compiler 渲染成真实dom
+const compiler = require("vue-template-compiler");
+render: compiler.compileToFunctions(`
+<div>
+    <p>选中复制</p>
+    <p class="code_btn" v-copy-select>选中</p>
+<div>
+`).render,
