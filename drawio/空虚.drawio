@@ -1,0 +1,79 @@
+<mxfile host="65bd71144e" modified="2021-02-20T02:38:22.645Z" agent="5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.51.1 Chrome/83.0.4103.122 Electron/9.3.3 Safari/537.36" etag="m1iJLbNKbBkFs8rEmXsU" version="14.2.4" type="embed">
+    <diagram id="6hGFLwfOUW9BJ-s0fimq" name="Page-1">
+        <mxGraphModel dx="1268" dy="910" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="43" value="node" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="160" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="sql语句" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="280" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="liunx" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="100" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="postgresql" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="280" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="mysql" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="280" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="nginx" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="100" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="pm2" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="100" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="go" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="160" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="c++" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="160" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="egg" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="220" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="express" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="220" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="docker" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="100" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="vue" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="380" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="react" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="450" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="TS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="160" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="vuetify" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="380" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="mobx" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="450" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="router-dom" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="450" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="android" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="555" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="redis" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="280" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="css" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="630" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="js" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="630" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="webpack" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="630" width="100" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
