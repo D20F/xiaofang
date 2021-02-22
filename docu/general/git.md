@@ -24,7 +24,8 @@ git checkout -b 本地分支名 origin/远程分支名
 ssh-keygen -o
 使用公钥进行git操作
 
-
+## git 设置代理
+git config --global http.proxy 'http://127.0.0.1:10809'
 
 
 

@@ -251,3 +251,10 @@ render: compiler.compileToFunctions(`
     <p class="code_btn" v-copy-select>选中</p>
 <div>
 `).render,
+
+## 同步加载js文件 防止寻找不到dom
+``` js
+    this.$nextTick(() => {
+        let Prism = require("@/utils/map/index");         
+    });
+```
