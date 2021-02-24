@@ -202,11 +202,9 @@ document.body.scrollIntoView({ behavior: "smooth" });
 使用IntersectionObserver 函数 观察是否进入视线区域
 懒性加载的第二种使用场景：下拉加载。在列表最底部部署一个占位元素且该元素无任何高度或实体外观，只需确认占位元素进入可视区域就请求接口加载数据。
 <ul>
-    <li></li>
-    <!-- 很多<li> -->
+    <li></li><!-- 很多<li> -->
 </ul>
-<!-- 也可将#bottom以<li>的形式插入到<ul>内部的最后位置 -->
-<div id="bottom"></div>
+<div id="bottom"></div><!-- 也可将#bottom以<li>的形式插入到<ul>内部的最后位置 -->
 复制代码
 const bottom = document.getElementById("bottom");
 const IntersectionObserver = new IntersectionObserver(nodes => {
@@ -220,3 +218,17 @@ IntersectionObserver.observe(bottom);
 
 ## 获取视图可视距离
 getBoundingClientRect
+
+## 获取当前页面的slot实例
+this.$slots
+
+## 获取当前页面的子父实例
+this.$children this.$parent
+
+## 实现文字超出省略号
+``` css
+{
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+```
