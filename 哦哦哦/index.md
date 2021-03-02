@@ -225,10 +225,4 @@ this.$slots
 ## 获取当前页面的子父实例
 this.$children this.$parent
 
-## 实现文字超出省略号
-``` css
-{
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-```
+
