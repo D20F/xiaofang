@@ -2,6 +2,9 @@
 ## 安装
 就按照官网安装
 
+## Docker Hub
+使用现成的官方镜像白嫖
+
 ### 镜像
 ## 查看当前本地镜像列表
    docker images
@@ -40,13 +43,6 @@ docker attach 1e560fca3906
 2. docker exec 因为此退出容器终端，不会导致容器的停止。
 docker exec -it 243c32535da7 /bin/bash
 
-
-
-
-## docker -v 挂载本机目录到容器内
-譬如我要启动一个centos容器，宿主机的/test目录挂载到容器的/soft目录，可通过以下方式指定：
-docker run -it -v /test:/soft centos /bin/bash
-
 ## 停止容器
    docker stop 容器id
 
@@ -67,7 +63,6 @@ $ cat docker/ubuntu.tar | docker import - ubuntu
 此外，也可以通过指定 URL 或者某个目录来导入，例如：
 $ docker import http://example.com/exampleimage.tgz exampleimage
 
-
 ### 容器与镜像间的操作
 ## 终端连接到容器
    docker exec -i -t 容器id bash
@@ -76,9 +71,27 @@ $ docker import http://example.com/exampleimage.tgz exampleimage
 ## 保存更改并生成为一个新的image文件
    docker commit -m "mess" 镜像id 镜像名字
 
+## 我们也可以使用 -p 标识来指定容器端口绑定到主机端口。
+1. -P :是容器内部端口随机映射到主机的高端口。
+2. -p : 是容器内部端口绑定到指定的主机端口。
+    docker run -d -p 5000:5000 training/webapp python app.py 33e4523d30aaf0258915c368e66e03b49535de0ef20317d3f639d40222ba6bc0
+3.  我们可以指定容器绑定的网络地址，比如绑定 127.0.0.1。
+    docker run -d -p 127.0.0.1:5001:5000 training/webapp python app.py
 
 ## 查询容器端口映射
- docker port bf08b7f2cd89
+docker port bf08b7f2cd89
+
+
+
+## 新建docker网络互连容器 实现容器互通
+## 给容器配置dns
+
+
+
+
+## docker -v 挂载本机目录到容器内
+譬如我要启动一个centos容器，宿主机的/test目录挂载到容器的/soft目录，可通过以下方式指定：
+docker run -it -v /test:/soft centos /bin/bash
 
 ## 使用Dockerfile创建自己的镜像
 

@@ -225,4 +225,6 @@ this.$slots
 ## 获取当前页面的子父实例
 this.$children this.$parent
 
-
+## 前端的dns优化，可以在html页面头部写入dns缓存地址，比如
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="http://bdimg.share.baidu.com" />
