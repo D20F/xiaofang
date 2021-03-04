@@ -7,6 +7,19 @@
 ```
 ## call apply bind
 ``` js
+  let A = {
+      setInfo(province,city){
+          console.log('我' + this.name + '今年' + this.age + '岁,来自'+province+'省'+city+'市')
+      }
+  }
+  let B={
+      age:37,
+      name:'老王'
+  }
+  A.setInfo.call(B,'四川','成都');//我老王今年37岁,来自四川省成都市
+  A.setInfo.apply(B,['四川','成都']);//我老王今年37岁,来自四川省成都市
+  A.setInfo.bind(B,'四川','成都')();//我老王今年37岁,来自四川省成都市
+
   call(b,1,2)     绑定this,后面为函数参数 
   apply(b,[1,2])  绑定this,函数参数用数组形式放进去 
   bind(b,1,2)()   绑定this,但是不会立刻执行,需要自己去执行,其他的和call一样

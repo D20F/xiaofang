@@ -228,3 +228,7 @@ this.$children this.$parent
 ## 前端的dns优化，可以在html页面头部写入dns缓存地址，比如
 <meta http-equiv="x-dns-prefetch-control" content="on" />
 <link rel="dns-prefetch" href="http://bdimg.share.baidu.com" />
+
+## webpack 优化
+1. 使用 splitChunks 分割大包
+2. 使用 CompressionWebpackPlugin 压缩文件 nginx开启gzip模式使用

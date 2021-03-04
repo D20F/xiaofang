@@ -13,8 +13,6 @@ uniapp-snippet
 
 
 
+Electron + Vite + Vue3 + Tailwindcss
 
 
-
-售货机
-复检
