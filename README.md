@@ -16,3 +16,4 @@ uniapp-snippet
 Electron + Vite + Vue3 + Tailwindcss
 
 
+k8s
