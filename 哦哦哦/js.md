@@ -271,3 +271,14 @@ render: compiler.compileToFunctions(`
         let Prism = require("@/utils/map/index");         
     });
 ```
+
+## 实例化vue组件并且挂载
+```js
+        // 注册 notify 组件
+        var Profile = Vue.extend(notify);
+        // 实例化挂载
+        var component = new Profile().$mount();
+        let dom = component.$el;
+        // 拍到 idapp里面
+        document.getElementById("app").appendChild(dom);
+```

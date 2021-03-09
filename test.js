@@ -23,8 +23,8 @@ document.getElementById('b2').addEventListener('click', () => {
 function checkWifiStatus() {
     cordova.plugins.hotspot.isWifiOn(successCB, errorCB);
     function successCB(info) {
-        console.log('info == true  为打开wifi',info)
-        console.log('info == false 为关闭wifi',info)
+        console.log('info == true  为打开wifi', info)
+        console.log('info == false 为关闭wifi', info)
     }
 }
 
@@ -44,8 +44,8 @@ function connectWifi() {
 function openWifi() {
     cordova.plugins.hotspot.toggleWifi(wifiStatus, errorCB);
     function wifiStatus(info) {
-        console.log('info == true  为打开wifi',info)
-        console.log('info == false 为关闭wifi',info)
+        console.log('info == true  为打开wifi', info)
+        console.log('info == false 为关闭wifi', info)
     }
 
     function errorCB(fs) {//若出现意外无法正常打开/关闭wifi，则提示出错，并返回错误信息
@@ -60,17 +60,17 @@ function showWifiSSID(wifiStatus) {
         document.getElementById('dispWifiSSID').innerHTML = info;
         var str = '';
         for (var i = 0; i < info.length; i++) {
-            str = info[i].SSID + '|' + info[i].BSSID ;
+            str = info[i].SSID + '|' + info[i].BSSID;
             document.querySelector('#deviceready').insertAdjacentHTML(
                 'beforeend',
                 `<p>${str}</p>`
-                )
+            )
         }
     }
     function errorCB() {
         alert('err fail:' + fs);
     }
-}   
+}
 
 
 

@@ -17,3 +17,12 @@ Electron + Vite + Vue3 + Tailwindcss
 
 
 k8s
+
+
+
+
+
+
+
+挂载即使提示弹窗
+看vue api
