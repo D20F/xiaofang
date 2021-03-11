@@ -257,13 +257,30 @@ if([1]==[1]){console.log(1)} //假
 
 
 ## vue底层渲染原理 虚拟dom由 vue-template-compiler 渲染成真实dom
+``` js
 const compiler = require("vue-template-compiler");
-render: compiler.compileToFunctions(`
-<div>
-    <p>选中复制</p>
-    <p class="code_btn" v-copy-select>选中</p>
-<div>
-`).render,
+var Profile = Vue.extend({
+    render: compiler.compileToFunctions(
+        `<p>{{firstName}} {{lastName}} aka {{alias}}</p>`
+    ).render,
+    data: function () {
+        return {
+            firstName: "Walter",
+            lastName: "White",
+            alias: "Heisenberg",
+        };
+    },
+});
+
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+render: compiler.compileToFunctions(`<p>{{count}}</p>`).render,
+})
+```
 
 ## 同步加载js文件 防止寻找不到dom
 ``` js
