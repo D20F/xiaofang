@@ -4,7 +4,19 @@ border-box 有边框和内边距的
 content-box  内容包括内边距和边框
 
 ## 移动端1px
-伪元素after transform 缩放解决 或者 设置viewport头解决
+伪元素after transform 缩放解决 或者 设置viewport头解决 
+``` css
+    .border-line:after {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        left: 0;
+        top: 0;
+        border: 1px solid #999;
+        transform:scale(0.5);
+        content: ' ';
+    }
+```
 
 ## href和src的区别
 href </br>
@@ -59,3 +71,7 @@ font-family: system-ui 能够自动选择本操作系统下的默认系统字体
 
 ## 粘性定位   用来做滑动粘性置顶粘粘很好
 position: -webkit-sticky; position: sticky;
+
+## 九宫格 border边框写法
+使用 margin 负边距让每个块向右下位移 使用 nth-child选择最上边和最左边那两列 那两列不需要位移 
+hover的时候使用 z-index 使得被遮住的border 出现
